@@ -1,0 +1,35 @@
+{
+    "name": "puntoclave",
+    "short_name": "puntoclave",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "app que permite a los habitantes del barrio tener un contacto más cercano y de vecindad con los diversos negocios y así puedan tener a la mano toda la información sobre los negocios y los productos y servicios que estos ofrecen. Los usuarios podrán registrarse y obtener descuentos y servicios especiales por ser habitantes del barrio. Eventualmente algún negocio puede lanzar una promoción especial y comunicar a los usuarios de la app",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
