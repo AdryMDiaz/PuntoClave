@@ -75,6 +75,10 @@ flutter:
     - images/screwdriver_1280.jpg
     - images/motorbike_1280.jpg
     - images/background_1280.jpg
+    - images/restaurant.jpg
+    - images/pharmasy1.jpg
+    - images/beauty_salon_1280.jpg
+    - images/hangers_1280.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
