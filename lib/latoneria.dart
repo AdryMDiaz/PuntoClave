@@ -77,17 +77,28 @@ class Latoneria extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 1.0,
+                          Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 100.0,
+                                child: const Text(
+                                  'Dirección física: '
+                                      'Correo electrónico: '
+                                      'Teléfono fijo: '
+                                      'Número Celular: '
+                                      'Página Web: '
+                                      'Productos: ',
+                                  style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          const Text(
-                              'Dirección Física: , Correo Electrónico: , Geolocalización: '),
-                          const Text('Teléfono Fijo: , Número de Celular: '),
-                          const Text('Página Web: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Productos: '),
                           const SizedBox(
                             height: 1.0,
                           ),
@@ -167,17 +178,28 @@ class Latoneria extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 1.0,
+                          Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 100.0,
+                                child: const Text(
+                                  'Dirección física: '
+                                      'Correo electrónico: '
+                                      'Teléfono fijo: '
+                                      'Número Celular: '
+                                      'Página Web: '
+                                      'Productos: ',
+                                  style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          const Text(
-                              'Dirección Física: , Correo Electrónico: , Geolocalización: '),
-                          const Text('Teléfono Fijo: , Número de Celular: '),
-                          const Text('Página Web: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Productos: '),
                           const SizedBox(
                             height: 1.0,
                           ),
@@ -257,17 +279,28 @@ class Latoneria extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 1.0,
+                          Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 100.0,
+                                child: const Text(
+                                  'Dirección física: '
+                                      'Correo electrónico: '
+                                      'Teléfono fijo: '
+                                      'Número Celular: '
+                                      'Página Web: '
+                                      'Productos: ',
+                                  style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          const Text(
-                              'Dirección Física: , Correo Electrónico: , Geolocalización: '),
-                          const Text('Teléfono Fijo: , Número de Celular: '),
-                          const Text('Página Web: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Productos: '),
                           const SizedBox(
                             height: 1.0,
                           ),
@@ -347,17 +380,28 @@ class Latoneria extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 1.0,
+                          Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 100.0,
+                                child: const Text(
+                                  'Dirección física: '
+                                      'Correo electrónico: '
+                                      'Teléfono fijo: '
+                                      'Número Celular: '
+                                      'Página Web: '
+                                      'Productos: ',
+                                  style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          const Text(
-                              'Dirección Física: , Correo Electrónico: , Geolocalización: '),
-                          const Text('Teléfono Fijo: , Número de Celular: '),
-                          const Text('Página Web: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Productos: '),
                           const SizedBox(
                             height: 1.0,
                           ),
@@ -437,17 +481,28 @@ class Latoneria extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 1.0,
+                          Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 100.0,
+                                child: const Text(
+                                  'Dirección física: '
+                                      'Correo electrónico: '
+                                      'Teléfono fijo: '
+                                      'Número Celular: '
+                                      'Página Web: '
+                                      'Productos: ',
+                                  style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          const Text(
-                              'Dirección Física: , Correo Electrónico: , Geolocalización: '),
-                          const Text('Teléfono Fijo: , Número de Celular: '),
-                          const Text('Página Web: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Productos: '),
                           const SizedBox(
                             height: 1.0,
                           ),
