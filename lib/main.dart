@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:puntoclave/belleza.dart';
 import 'package:puntoclave/farmacia.dart';
-import 'package:puntoclave/ferreteria.dart';
 import 'package:puntoclave/latoneria.dart';
 import 'package:puntoclave/licoreria.dart';
 import 'package:puntoclave/miscelanea.dart';
@@ -146,53 +145,6 @@ class MyApp extends StatelessWidget {
                           'Tintorerías y Lavanderías',
                           style: TextStyle(
                             color: Colors.blueGrey,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Ferreteria()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
-                              ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/tools_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        color: Colors.black,
-                        child: const Text(
-                          'Ferreterías y Cerrajerías',
-                          style: TextStyle(
-                            color: Colors.yellow,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
                           ),
