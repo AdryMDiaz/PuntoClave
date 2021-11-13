@@ -21,7 +21,14 @@ class Neg1_Belleza extends StatelessWidget {
                 fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
-          leading: const Icon(Icons.menu),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+            ),
+            onPressed: () {
+              print('Menu Lateral');
+            },
+          ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
@@ -36,8 +43,8 @@ class Neg1_Belleza extends StatelessWidget {
                 Icons.home,
               ),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MyApp()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Index()));
               },
             ),
             IconButton(

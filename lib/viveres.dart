@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:puntoclave/neg1_viveres.dart';
-import 'package:puntoclave/neg2_viveres.dart';
 
 class Viveres extends StatelessWidget {
   @override
@@ -38,12 +36,7 @@ class Viveres extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Neg1_Viveres()));
-                },
-                child: Stack(
+              Stack(
                   children: [
                     Container(
                       margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
@@ -143,13 +136,7 @@ class Viveres extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Neg2_Viveres()));
-                },
-                child: Stack(
+      Stack(
                   children: [
                     Container(
                       margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
@@ -249,7 +236,6 @@ class Viveres extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
             ],
           ),
         ),

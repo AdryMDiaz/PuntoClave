@@ -3,25 +3,32 @@ import 'package:flutter/material.dart';
 
 import 'main.dart';
 
-class Neg2_Viveres extends StatelessWidget {
+class Neg2_Ropa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.indigo,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
             'Productos',
             style: TextStyle(
-                color: Colors.yellow,
+                color: Colors.white70,
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
-          leading: const Icon(Icons.menu),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+            ),
+            onPressed: () {
+              print('Menu Lateral');
+            },
+          ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
@@ -36,8 +43,8 @@ class Neg2_Viveres extends StatelessWidget {
                 Icons.home,
               ),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MyApp()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Index()));
               },
             ),
             IconButton(
@@ -132,7 +139,7 @@ class Neg2_Viveres extends StatelessWidget {
                                 height: 25.0,
                                 child: FloatingActionButton.extended(
                                   backgroundColor: Colors.white60,
-                                  foregroundColor: Colors.brown,
+                                  foregroundColor: Colors.indigo,
                                   onPressed: () {
                                     print('Ir a carrito de compras');
                                     //Navigator.pop(context);
@@ -244,7 +251,7 @@ class Neg2_Viveres extends StatelessWidget {
                                 height: 25.0,
                                 child: FloatingActionButton.extended(
                                   backgroundColor: Colors.white60,
-                                  foregroundColor: Colors.brown,
+                                  foregroundColor: Colors.indigo,
                                   onPressed: () {
                                     print('Ir a carrito de compras');
                                     //Navigator.pop(context);

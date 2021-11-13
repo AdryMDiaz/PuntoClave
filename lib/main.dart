@@ -1,3 +1,5 @@
+//import 'package:cloud_firestore/cloud_firestore.dart/';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:puntoclave/belleza.dart';
@@ -13,16 +15,36 @@ import 'package:puntoclave/tintoreria.dart';
 import 'package:puntoclave/viveres.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    title: 'Navigation Basics',
-    home: MyApp(),
-  ));
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
+  Widget build(BuildContext context) {
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Index());
+  }
+}
+
+class Index extends StatefulWidget {
+  @override
+  IndexStart createState() => IndexStart();
+}
+
+@override
+class IndexStart extends State<Index> {
+  String categoria1 = "Víveres y Abarrotes";
+  String categoria2 = "Tintorerías y Lavanderías";
+  String categoria3 = "Latonería y Pintura";
+  String categoria4 = "Restaurantes y Cafeterías";
+  String categoria5 = "Farmacias y Droguerías";
+  String categoria6 = "Misceláneas y Papelerías";
+  String categoria7 = "Peluquería y Belleza";
+  String categoria8 = "Ropa y Accesorios";
+  String categoria9 = "Publicidad y Fotografía";
+  String categoria10 = "Licorerías y Lavanderías";
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PuntoClave',
@@ -41,7 +63,14 @@ class MyApp extends StatelessWidget {
                 fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
-          leading: const Icon(Icons.menu),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+            ),
+            onPressed: () {
+              print('Menu Lateral');
+            },
+          ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
@@ -94,9 +123,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.brown,
-                        child: const Text(
-                          'Víveres y Abarrotes',
-                          style: TextStyle(
+                        child: Text(
+                          categoria1,
+                          style: const TextStyle(
                             color: Colors.yellow,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -141,9 +170,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.white,
-                        child: const Text(
-                          'Tintorerías y Lavanderías',
-                          style: TextStyle(
+                        child: Text(
+                          categoria2,
+                          style: const TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -188,9 +217,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.black12,
-                        child: const Text(
-                          'Latonería y Pintura',
-                          style: TextStyle(
+                        child: Text(
+                          categoria3,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -237,9 +266,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.brown,
-                        child: const Text(
-                          'Restaurantes y Cafeterías',
-                          style: TextStyle(
+                        child: Text(
+                          categoria4,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -284,9 +313,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.blueGrey,
-                        child: const Text(
-                          'Farmacias y Droguerías',
-                          style: TextStyle(
+                        child: Text(
+                          categoria5,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -331,9 +360,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.white54,
-                        child: const Text(
-                          'Misceláneas y Papelerías',
-                          style: TextStyle(
+                        child: Text(
+                          categoria6,
+                          style: const TextStyle(
                             color: Colors.deepPurple,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -378,9 +407,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.black12,
-                        child: const Text(
-                          'Peluquería y Belleza',
-                          style: TextStyle(
+                        child: Text(
+                          categoria7,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -425,9 +454,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.black12,
-                        child: const Text(
-                          'Ropa y Accesorios',
-                          style: TextStyle(
+                        child: Text(
+                          categoria8,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -472,9 +501,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.black12,
-                        child: const Text(
-                          'Publicidad y Fotografía',
-                          style: TextStyle(
+                        child: Text(
+                          categoria9,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -519,9 +548,9 @@ class MyApp extends StatelessWidget {
                       ),
                       Container(
                         color: Colors.black12,
-                        child: const Text(
-                          'Licorerías',
-                          style: TextStyle(
+                        child: Text(
+                          categoria10,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
                             fontWeight: FontWeight.w900,
@@ -535,6 +564,38 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business_center),
+              title: Text('Servicios'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications),
+              title: Text('Notificaciones'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text('Iniciar Sesion'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MenuLateral extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Drawer(
+      child: ListView(
+        children: const <Widget>[
+          UserAccountsDrawerHeader(
+            accountName: Text("Nombre Usuario"),
+            accountEmail: Text('ameusuario@nameusuario.com'),
+          ),
+        ],
       ),
     );
   }

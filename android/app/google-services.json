@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "346330309009",
+    "project_id": "puntoclave-f8251",
+    "storage_bucket": "puntoclave-f8251.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346330309009:android:d78895f4b053da014f7a30",
+        "android_client_info": {
+          "package_name": "com.example.puntoclave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346330309009-jc1v6a2knhcsb64cpicd5r25iq1o667t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVf-t1Jk5KZ3puMTxHTY1WznFvrUV2Rbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346330309009-jc1v6a2knhcsb64cpicd5r25iq1o667t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
