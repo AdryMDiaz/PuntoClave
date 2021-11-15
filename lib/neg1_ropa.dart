@@ -45,7 +45,7 @@ class Neg1_Ropa extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Index()));
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
             IconButton(

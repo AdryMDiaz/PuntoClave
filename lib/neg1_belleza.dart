@@ -44,7 +44,7 @@ class Neg1_Belleza extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Index()));
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
             IconButton(
