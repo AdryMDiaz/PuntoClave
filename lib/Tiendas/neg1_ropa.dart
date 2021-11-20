@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:puntoclave/modulo_productos.dart';
+import 'package:puntoclave/Productos/modulo_productos.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class Neg1_Ropa extends StatelessWidget {
   @override

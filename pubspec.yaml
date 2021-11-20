@@ -82,6 +82,7 @@ flutter:
     - images/beauty_salon_1280.jpg
     - images/hangers_1280.jpg
     - images/tshirt_1280.jpg
+    - images/bubbles_1280.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

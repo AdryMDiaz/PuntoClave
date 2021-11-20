@@ -1,23 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Tintoreria extends StatelessWidget {
+import '../main.dart';
+
+class Farmacia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Tintorerías y Lavanderías',
+            'Farmacia y Droguería',
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 20.0,
+                fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
           leading: const Icon(Icons.menu),
@@ -27,7 +28,8 @@ class Tintoreria extends StatelessWidget {
                 Icons.home,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
           ],
@@ -128,7 +130,7 @@ class Tintoreria extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: Image.asset(
-                        'images/washing_machine_1280.jpg',
+                        'images/pharmasy1.jpg',
                         width: 110.0,
                         fit: BoxFit.cover,
                       ),
@@ -228,7 +230,7 @@ class Tintoreria extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: Image.asset(
-                        'images/washing_machine_1280.jpg',
+                        'images/pharmasy1.jpg',
                         width: 110.0,
                         fit: BoxFit.cover,
                       ),

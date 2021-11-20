@@ -1,8 +1,14 @@
 /// Flutter code sample for BottomNavigationBar
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Clientes/login.dart';
 import 'package:puntoclave/home.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 /// This is the main application widget.
 class MyApp extends StatelessWidget {
@@ -39,9 +45,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       child:
           Text('Index 1: Notificaciones y/o Promociones', style: optionStyle),
     ),
-    const Center(
-      child: Text('Index 2: Iniciar Sesión', style: optionStyle),
-    ),
+    Loginclientes(),
   ];
 
   void _onItemTapped(int index) {

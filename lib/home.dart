@@ -1,25 +1,23 @@
-//import 'package:cloud_firestore/cloud_firestore.dart/';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:puntoclave/belleza.dart';
-import 'package:puntoclave/farmacia.dart';
-import 'package:puntoclave/latoneria.dart';
-import 'package:puntoclave/licoreria.dart';
-import 'package:puntoclave/menulateral.dart';
-import 'package:puntoclave/miscelanea.dart';
-import 'package:puntoclave/publicidad.dart';
-import 'package:puntoclave/restaurantes.dart';
-import 'package:puntoclave/ropa.dart';
+import 'package:puntoclave/Categorias/belleza.dart';
+import 'package:puntoclave/Categorias/farmacia.dart';
+import 'package:puntoclave/Categorias/latoneria.dart';
+import 'package:puntoclave/Categorias/licoreria.dart';
+import 'package:puntoclave/Clientes/menulateral.dart';
+import 'package:puntoclave/Categorias/miscelanea.dart';
+import 'package:puntoclave/Categorias/publicidad.dart';
+import 'package:puntoclave/Categorias/restaurantes.dart';
+import 'package:puntoclave/Categorias/ropa.dart';
 import 'package:puntoclave/search.dart';
-import 'package:puntoclave/tintoreria.dart';
-import 'package:puntoclave/viveres.dart';
+import 'package:puntoclave/Categorias/tintoreria.dart';
+import 'package:puntoclave/Categorias/viveres.dart';
 
-void main() {
+/*void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
   runApp(MyApp());
-}
+}*/
 
 class MyApp extends StatelessWidget {
   @override

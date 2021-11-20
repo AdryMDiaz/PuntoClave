@@ -1,22 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:puntoclave/neg1_ropa.dart';
-import 'package:puntoclave/neg2_ropa.dart';
+import 'package:puntoclave/Tiendas/neg2_belleza.dart';
 
-class Ropa extends StatelessWidget {
+import '../Tiendas/neg1_belleza.dart';
+import '../main.dart';
+
+class Belleza extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.pink,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Ropa y Accesorios',
+            'Peluqueria y Belleza',
             style: TextStyle(
-                color: Colors.white60,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
                 fontStyle: FontStyle.italic),
@@ -35,7 +37,8 @@ class Ropa extends StatelessWidget {
                 Icons.home,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
           ],
@@ -47,7 +50,7 @@ class Ropa extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Neg1_Ropa()));
+                      MaterialPageRoute(builder: (context) => Neg1_Belleza()));
                 },
                 child: Stack(
                   children: [
@@ -141,7 +144,7 @@ class Ropa extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12.0),
                         child: Image.asset(
-                          'images/hangers_1280.jpg',
+                          'images/beauty_salon_1280.jpg',
                           width: 110.0,
                           fit: BoxFit.cover,
                         ),
@@ -153,7 +156,7 @@ class Ropa extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Neg2_Ropa()));
+                      MaterialPageRoute(builder: (context) => Neg2_Belleza()));
                 },
                 child: Stack(
                   children: [
@@ -247,7 +250,7 @@ class Ropa extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12.0),
                         child: Image.asset(
-                          'images/hangers_1280.jpg',
+                          'images/beauty_salon_1280.jpg',
                           width: 110.0,
                           fit: BoxFit.cover,
                         ),

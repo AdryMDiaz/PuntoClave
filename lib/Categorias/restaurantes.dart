@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class Restaurantes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,8 @@ class Restaurantes extends StatelessWidget {
                 Icons.home,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
           ],

@@ -1,21 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Publicidad extends StatelessWidget {
+import '../main.dart';
+
+class Latoneria extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Publicidad y Fotografía',
+            'Latonería y Pintura',
             style: TextStyle(
-                color: Colors.white,
+                color: Colors.white70,
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,
                 fontStyle: FontStyle.italic),
@@ -27,7 +29,8 @@ class Publicidad extends StatelessWidget {
                 Icons.home,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
           ],
@@ -127,8 +130,8 @@ class Publicidad extends StatelessWidget {
                     bottom: 5.0,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
-                      child: Image.network(
-                        'https://t3.ftcdn.net/jpg/00/67/45/86/240_F_67458672_QwFWNd3yoVE7XEZXeGsRNhNhQXnWQ0hg.jpg',
+                      child: Image.asset(
+                        'images/motorbike_1280.jpg',
                         width: 110.0,
                         fit: BoxFit.cover,
                       ),
@@ -227,8 +230,8 @@ class Publicidad extends StatelessWidget {
                     bottom: 5.0,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
-                      child: Image.network(
-                        'https://t3.ftcdn.net/jpg/00/67/45/86/240_F_67458672_QwFWNd3yoVE7XEZXeGsRNhNhQXnWQ0hg.jpg',
+                      child: Image.asset(
+                        'images/motorbike_1280.jpg',
                         width: 110.0,
                         fit: BoxFit.cover,
                       ),

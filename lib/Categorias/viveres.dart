@@ -1,43 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'main.dart';
+import '../main.dart';
 
-class Neg2_Ropa extends StatelessWidget {
+class Viveres extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.brown,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Productos',
+            'Víveres y Abarrotes',
             style: TextStyle(
-                color: Colors.white70,
+                color: Colors.yellow,
                 fontWeight: FontWeight.bold,
-                fontSize: 16.0,
+                fontSize: 20.0,
                 fontStyle: FontStyle.italic),
           ),
-          leading: IconButton(
-            icon: const Icon(
-              Icons.menu,
-            ),
-            onPressed: () {
-              print('Menu Lateral');
-            },
-          ),
+          leading: const Icon(Icons.menu),
           actions: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
             IconButton(
               icon: const Icon(
                 Icons.home,
@@ -45,15 +31,6 @@ class Neg2_Ropa extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => MyApp()));
-              },
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.shopping_cart,
-              ),
-              onPressed: () {
-                print('Ir al carrito de compras');
-                //Navigator.pop(context);
               },
             ),
           ],
@@ -66,7 +43,7 @@ class Neg2_Ropa extends StatelessWidget {
                 children: [
                   Container(
                     margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
-                    height: 115.0,
+                    height: 200.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12.0),
@@ -79,7 +56,7 @@ class Neg2_Ropa extends StatelessWidget {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsets.fromLTRB(120.0, 10.0, 10.0, 5.0),
+                          const EdgeInsets.fromLTRB(120.0, 10.0, 10.0, 20.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,13 +66,17 @@ class Neg2_Ropa extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 110.0,
+                                width: 100.0,
                                 child: const Text(
-                                  'Servicio 1',
+                                  'Negocio 1',
                                   style: TextStyle(
-                                      fontSize: 15.0,
+                                      fontSize: 17.0,
                                       fontWeight: FontWeight.w600),
                                 ),
+                              ),
+                              const Icon(
+                                Icons.favorite_border,
+                                color: Colors.pinkAccent,
                               ),
                             ],
                           ),
@@ -104,12 +85,17 @@ class Neg2_Ropa extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 80.0,
+                                width: 100.0,
                                 child: const Text(
-                                  'Precio: ',
+                                  'Dirección física: '
+                                  'Correo electrónico: '
+                                  'Teléfono fijo: '
+                                  'Número Celular: '
+                                  'Página Web: '
+                                  'Productos: ',
                                   style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w300,
                                   ),
                                 ),
                               ),
@@ -118,40 +104,19 @@ class Neg2_Ropa extends StatelessWidget {
                           const SizedBox(
                             height: 1.0,
                           ),
-                          const Text('IVA: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Precio Total: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          //const Text('Cantidad +1-'),
+                          const Text('⭐⭐⭐⭐⭐'),
                           const SizedBox(
                             height: 1.0,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 150.0,
-                                height: 25.0,
-                                child: FloatingActionButton.extended(
-                                  backgroundColor: Colors.white60,
-                                  foregroundColor: Colors.indigo,
-                                  onPressed: () {
-                                    print('Ir a carrito de compras');
-                                    //Navigator.pop(context);
-                                  },
-                                  label: const Text(
-                                    'Añadir al Carrito',
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w900),
-                                  ),
-                                  icon: const Icon(Icons.add_shopping_cart),
-                                ),
+                            children: const [
+                              Text(
+                                '45 min',
+                                style: TextStyle(color: Colors.black54),
+                              ),
+                              Icon(
+                                Icons.timer,
+                                color: Colors.black54,
                               ),
                             ],
                           ),
@@ -166,7 +131,7 @@ class Neg2_Ropa extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: Image.asset(
-                        'images/beauty_salon_1280.jpg',
+                        'images/vegetables_1280.jpg',
                         width: 110.0,
                         fit: BoxFit.cover,
                       ),
@@ -178,7 +143,7 @@ class Neg2_Ropa extends StatelessWidget {
                 children: [
                   Container(
                     margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
-                    height: 115.0,
+                    height: 200.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12.0),
@@ -191,7 +156,7 @@ class Neg2_Ropa extends StatelessWidget {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsets.fromLTRB(120.0, 10.0, 10.0, 5.0),
+                          const EdgeInsets.fromLTRB(120.0, 10.0, 10.0, 20.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -201,13 +166,17 @@ class Neg2_Ropa extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 110.0,
+                                width: 100.0,
                                 child: const Text(
-                                  'Servicio 2',
+                                  'Negocio 2',
                                   style: TextStyle(
-                                      fontSize: 15.0,
+                                      fontSize: 17.0,
                                       fontWeight: FontWeight.w600),
                                 ),
+                              ),
+                              const Icon(
+                                Icons.favorite_border,
+                                color: Colors.pinkAccent,
                               ),
                             ],
                           ),
@@ -216,12 +185,17 @@ class Neg2_Ropa extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 80.0,
+                                width: 100.0,
                                 child: const Text(
-                                  'Precio: ',
+                                  'Dirección física: '
+                                  'Correo electrónico: '
+                                  'Teléfono fijo: '
+                                  'Número Celular: '
+                                  'Página Web: '
+                                  'Productos: ',
                                   style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w300,
                                   ),
                                 ),
                               ),
@@ -230,40 +204,19 @@ class Neg2_Ropa extends StatelessWidget {
                           const SizedBox(
                             height: 1.0,
                           ),
-                          const Text('IVA: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Precio Total: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          //const Text('Cantidad +1-'),
+                          const Text('⭐⭐⭐⭐⭐'),
                           const SizedBox(
                             height: 1.0,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 150.0,
-                                height: 25.0,
-                                child: FloatingActionButton.extended(
-                                  backgroundColor: Colors.white60,
-                                  foregroundColor: Colors.indigo,
-                                  onPressed: () {
-                                    print('Ir a carrito de compras');
-                                    //Navigator.pop(context);
-                                  },
-                                  label: const Text(
-                                    'Añadir al Carrito',
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w900),
-                                  ),
-                                  icon: const Icon(Icons.add_shopping_cart),
-                                ),
+                            children: const [
+                              Text(
+                                '45 min',
+                                style: TextStyle(color: Colors.black54),
+                              ),
+                              Icon(
+                                Icons.timer,
+                                color: Colors.black54,
                               ),
                             ],
                           ),
@@ -278,7 +231,7 @@ class Neg2_Ropa extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: Image.asset(
-                        'images/beauty_salon_1280.jpg',
+                        'images/vegetables_1280.jpg',
                         width: 110.0,
                         fit: BoxFit.cover,
                       ),

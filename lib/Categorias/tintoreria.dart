@@ -1,21 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Miscelanea extends StatelessWidget {
+import '../main.dart';
+
+class Tintoreria extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.blueGrey,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Misceláneas y Papelerías',
+            'Tintorerías y Lavanderías',
             style: TextStyle(
-                color: Colors.grey,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,
                 fontStyle: FontStyle.italic),
@@ -27,7 +29,8 @@ class Miscelanea extends StatelessWidget {
                 Icons.home,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
           ],
@@ -128,7 +131,7 @@ class Miscelanea extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: Image.asset(
-                        'images/background_1280.jpg',
+                        'images/washing_machine_1280.jpg',
                         width: 110.0,
                         fit: BoxFit.cover,
                       ),
@@ -228,7 +231,7 @@ class Miscelanea extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: Image.asset(
-                        'images/background_1280.jpg',
+                        'images/washing_machine_1280.jpg',
                         width: 110.0,
                         fit: BoxFit.cover,
                       ),

@@ -1,33 +1,44 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Tiendas/neg1_ropa.dart';
+import 'package:puntoclave/Tiendas/neg2_ropa.dart';
 
-class Viveres extends StatelessWidget {
+import '../main.dart';
+
+class Ropa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.indigo,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Víveres y Abarrotes',
+            'Ropa y Accesorios',
             style: TextStyle(
-                color: Colors.yellow,
+                color: Colors.white60,
                 fontWeight: FontWeight.bold,
-                fontSize: 20.0,
+                fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
-          leading: const Icon(Icons.menu),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+            ),
+            onPressed: () {
+              print('Menu Lateral');
+            },
+          ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
                 Icons.home,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
           ],
@@ -36,7 +47,12 @@ class Viveres extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Neg1_Ropa()));
+                },
+                child: Stack(
                   children: [
                     Container(
                       margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
@@ -128,7 +144,7 @@ class Viveres extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12.0),
                         child: Image.asset(
-                          'images/vegetables_1280.jpg',
+                          'images/hangers_1280.jpg',
                           width: 110.0,
                           fit: BoxFit.cover,
                         ),
@@ -136,7 +152,13 @@ class Viveres extends StatelessWidget {
                     ),
                   ],
                 ),
-      Stack(
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Neg2_Ropa()));
+                },
+                child: Stack(
                   children: [
                     Container(
                       margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
@@ -228,7 +250,7 @@ class Viveres extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12.0),
                         child: Image.asset(
-                          'images/vegetables_1280.jpg',
+                          'images/hangers_1280.jpg',
                           width: 110.0,
                           fit: BoxFit.cover,
                         ),
@@ -236,6 +258,7 @@ class Viveres extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
             ],
           ),
         ),
