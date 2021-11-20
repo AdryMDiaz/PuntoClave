@@ -96,18 +96,16 @@ class _LoginclientesState extends State<Loginclientes> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
+              /*Padding(
                 padding: EdgeInsets.all(20),
                 child: Center(
                   child: Container(
                     width: 200,
                     height: 200,
-                    child: Image.asset(
-                      "images/bubbles_1280.png",
-                    ),
+                    child: Image.asset(""),
                   ),
                 ),
-              ),
+              ),*/
               Padding(
                 padding:
                     EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
@@ -145,49 +143,88 @@ class _LoginclientesState extends State<Loginclientes> {
               ),
               Padding(
                 padding: EdgeInsets.all(15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      //width: 130.0,
-                      //height: 50.0,
-                      child: FloatingActionButton.extended(
-                        //backgroundColor: Colors.white60,
-                        //foregroundColor: Colors.brown,
-                        onPressed: () {
-                          validarDatos();
-                        },
-                        label: const Text(
-                          'Iniciar Sesión',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        //width: 130.0,
+                        //height: 50.0,
+                        child: FloatingActionButton.extended(
+                          //backgroundColor: Colors.white60,
+                          //foregroundColor: Colors.brown,
+                          onPressed: () {
+                            validarDatos();
+                          },
+                          label: const Text(
+                            'Iniciar Sesión',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
+                          icon: const Icon(Icons.login),
                         ),
-                        icon: const Icon(Icons.login),
                       ),
-                    ),
-                    SizedBox(
-                      //width: 130.0,
-                      //height: 50.0,
-                      child: FloatingActionButton.extended(
-                        //backgroundColor: Colors.white60,
-                        //foregroundColor: Colors.brown,
-                        onPressed: () {
-                          validarDatos();
-                        },
-                        label: const Text(
-                          'Darme de baja',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w700,
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        //width: 130.0,
+                        //height: 50.0,
+                        child: FloatingActionButton.extended(
+                          //backgroundColor: Colors.white60,
+                          //foregroundColor: Colors.brown,
+                          onPressed: () {},
+                          label: const Text(
+                            'Darme de Baja',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
+                          icon: const Icon(Icons.auto_delete),
                         ),
-                        icon: const Icon(Icons.auto_delete),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        //width: 130.0,
+                        //height: 50.0,
+                        child: FloatingActionButton.extended(
+                          //backgroundColor: Colors.white60,
+                          //foregroundColor: Colors.brown,
+                          onPressed: () {},
+                          label: const Text(
+                            'Olvidé mi contraseña',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          icon: const Icon(Icons.remember_me),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

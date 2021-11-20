@@ -206,31 +206,6 @@ class _RegistroclientesState extends State<Registroclientes> {
                           phone.clear();
                           cellphone.clear();
                           password.clear();
-
-                          final snackBar = SnackBar(
-                            content: const Text('¡Registro Exitoso!'),
-                            backgroundColor: Colors.red,
-                            behavior: SnackBarBehavior.floating,
-                            elevation: 30,
-                            duration: const Duration(minutes: 2),
-                            shape: const StadiumBorder(
-                                side: BorderSide(
-                                    color: Colors.transparent, width: 2)),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {
-                                // Some code to undo the change.
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MyApp()));
-                              },
-                            ),
-                          );
-
-                          // Find the ScaffoldMessenger in the widget tree
-                          // and use it to show a SnackBar.
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         },
                         label: const Text(
                           'Registrarse',

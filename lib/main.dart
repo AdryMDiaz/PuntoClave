@@ -1,7 +1,7 @@
 /// Flutter code sample for BottomNavigationBar
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:puntoclave/Clientes/login.dart';
+import 'package:puntoclave/Clientes/login_usuario.dart';
 import 'package:puntoclave/home.dart';
 
 void main() {
@@ -46,6 +46,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           Text('Index 1: Notificaciones y/o Promociones', style: optionStyle),
     ),
     Loginclientes(),
+    const Center(
+      child: Text('Index 3: Gestión de Tiendas', style: optionStyle),
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -65,8 +68,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.red[800],
         iconSize: 25,
-        selectedFontSize: 15,
-        unselectedFontSize: 11,
+        selectedFontSize: 12,
+        unselectedFontSize: 10,
         //showUnselectedLabels: false,
         //showSelectedLabels: false,
         currentIndex: _selectedIndex,
@@ -82,7 +85,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Iniciar Sesion',
+            label: 'Usuarios',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Tiendas',
           ),
         ],
         //currentIndex: _selectedIndex,
