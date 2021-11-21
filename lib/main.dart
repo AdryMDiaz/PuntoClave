@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:puntoclave/Clientes/login_usuario.dart';
 import 'package:puntoclave/home.dart';
+import 'package:puntoclave/login_tienda.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,9 +47,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           Text('Index 1: Notificaciones y/o Promociones', style: optionStyle),
     ),
     Loginclientes(),
-    const Center(
-      child: Text('Index 3: Gestión de Tiendas', style: optionStyle),
-    ),
+    Logintiendas(),
   ];
 
   void _onItemTapped(int index) {
