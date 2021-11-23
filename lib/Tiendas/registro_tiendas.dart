@@ -37,6 +37,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
         "categoria": categoria.text,
         "productos": productos.text,
         "contraseña": password1.text,
+        "estado": true
       });
       mensaje("Registro Exitoso", "Negocio creado exitosamente");
     } catch (e) {
@@ -50,7 +51,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
     return MaterialApp(
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.deepOrange,
       ),
       home: Scaffold(
         appBar: AppBar(
