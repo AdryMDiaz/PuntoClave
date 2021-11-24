@@ -63,8 +63,9 @@ class _RegistroclientesState extends State<Registroclientes> {
               Icons.arrow_back,
             ),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
+              Navigator.pop(context);
+              /*Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));*/
             },
           ),
           /*actions: <Widget>[

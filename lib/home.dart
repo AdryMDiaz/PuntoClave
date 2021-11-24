@@ -4,14 +4,14 @@ import 'package:puntoclave/Categorias/belleza.dart';
 import 'package:puntoclave/Categorias/farmacia.dart';
 import 'package:puntoclave/Categorias/latoneria.dart';
 import 'package:puntoclave/Categorias/licoreria.dart';
-import 'package:puntoclave/Clientes/menulateral.dart';
 import 'package:puntoclave/Categorias/miscelanea.dart';
 import 'package:puntoclave/Categorias/publicidad.dart';
 import 'package:puntoclave/Categorias/restaurantes.dart';
 import 'package:puntoclave/Categorias/ropa.dart';
-import 'package:puntoclave/search.dart';
 import 'package:puntoclave/Categorias/tintoreria.dart';
 import 'package:puntoclave/Categorias/viveres.dart';
+import 'package:puntoclave/Clientes/menulateral.dart';
+import 'package:puntoclave/search.dart';
 
 /*void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,15 +64,12 @@ class IndexStart extends State<Index> {
                 fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
-          /*leading: IconButton(
+          leading: IconButton(
             icon: const Icon(
-              Icons.menu,
+              Icons.style_rounded,
             ),
-            onPressed: () {
-              MenuLateral();
-              //print('Menu Lateral');
-            },
-          ),*/
+            onPressed: () {},
+          ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(

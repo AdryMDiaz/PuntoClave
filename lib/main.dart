@@ -2,8 +2,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:puntoclave/Clientes/login_usuario.dart';
+import 'package:puntoclave/Tiendas/login_tienda.dart';
 import 'package:puntoclave/home.dart';
-import 'package:puntoclave/login_tienda.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

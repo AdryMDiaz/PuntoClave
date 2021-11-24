@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Clientes/modificar_pass_cli.dart';
 import 'package:puntoclave/Clientes/registro_clientes.dart';
 import 'package:puntoclave/Productos/modulo_productos.dart';
-import 'package:puntoclave/modificar_pass_cli.dart';
 
 import '../main.dart';
 
@@ -231,7 +231,7 @@ class _LoginclientesState extends State<Loginclientes> {
                   ),
                 ),
               ),
-              Padding(
+              /*Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
                   child: Row(
@@ -258,7 +258,7 @@ class _LoginclientesState extends State<Loginclientes> {
                     ],
                   ),
                 ),
-              ),
+              ),*/
               Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
@@ -383,6 +383,33 @@ class _LoginclientesState extends State<Loginclientes> {
               onPressed: () {
                 inactivarCliente();
                 Navigator.of(context, rootNavigator: true).pop();
+
+                final snackBar = SnackBar(
+                  content: const Text(
+                    '¡Cliente Inactivado Exitosamente!',
+                    textAlign: TextAlign.center,
+                  ),
+                  backgroundColor: Colors.red,
+                  behavior: SnackBarBehavior.floating,
+                  //width: 300,
+                  //height: 200,
+                  margin: EdgeInsets.all(60),
+                  elevation: 30,
+                  shape: const StadiumBorder(
+                      side: BorderSide(color: Colors.redAccent, width: 2)),
+                  /*action: SnackBarAction(
+                    label: '',
+                    textColor: Colors.white,
+                    onPressed: () {
+                      // Some code to undo the change.
+                      Navigator.pop(context);
+                    },
+                  ),*/
+                );
+
+                // Find the ScaffoldMessenger in the widget tree
+                // and use it to show a SnackBar.
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
             ),
             RaisedButton(

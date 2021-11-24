@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:puntoclave/Productos/registro_productos.dart';
+import 'package:puntoclave/Tiendas/modificar_pass_neg.dart';
 import 'package:puntoclave/Tiendas/registro_tiendas.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class Logintiendas extends StatefulWidget {
   const Logintiendas({Key? key}) : super(key: key);
@@ -233,7 +234,7 @@ class _LogintiendasState extends State<Logintiendas> {
                   ),
                 ),
               ),
-              Padding(
+              /*Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
                   child: Row(
@@ -260,7 +261,7 @@ class _LogintiendasState extends State<Logintiendas> {
                     ],
                   ),
                 ),
-              ),
+              ),*/
               Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
@@ -274,7 +275,13 @@ class _LogintiendasState extends State<Logintiendas> {
                         child: FloatingActionButton.extended(
                           //backgroundColor: Colors.white60,
                           //foregroundColor: Colors.brown,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Modificarpasstiendas()));
+                          },
                           label: const Text(
                             'Olvidé mi contraseña',
                             style: TextStyle(
@@ -379,6 +386,34 @@ class _LogintiendasState extends State<Logintiendas> {
               onPressed: () {
                 inactivarTienda();
                 Navigator.of(context, rootNavigator: true).pop();
+
+                final snackBar = SnackBar(
+                  content: const Text(
+                    '¡Cliente Inactivado Exitosamente!',
+                    textAlign: TextAlign.center,
+                  ),
+                  backgroundColor: Colors.deepOrange,
+                  behavior: SnackBarBehavior.floating,
+                  //width: 300,
+                  //height: 200,
+                  margin: EdgeInsets.all(60),
+                  elevation: 30,
+                  shape: const StadiumBorder(
+                      side:
+                          BorderSide(color: Colors.deepOrangeAccent, width: 2)),
+                  /*action: SnackBarAction(
+                    label: '',
+                    textColor: Colors.white,
+                    onPressed: () {
+                      // Some code to undo the change.
+                      Navigator.pop(context);
+                    },
+                  ),*/
+                );
+
+                // Find the ScaffoldMessenger in the widget tree
+                // and use it to show a SnackBar.
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
             ),
             RaisedButton(

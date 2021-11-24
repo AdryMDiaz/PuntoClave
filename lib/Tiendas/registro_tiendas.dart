@@ -69,8 +69,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
               Icons.arrow_back,
             ),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
+              Navigator.pop(context);
             },
           ),
         ),

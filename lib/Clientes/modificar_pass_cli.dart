@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:puntoclave/main.dart';
 
 class Modificarpassclientes extends StatefulWidget {
   const Modificarpassclientes({Key? key}) : super(key: key);
@@ -93,15 +92,16 @@ class _ModificarpassclientesState extends State<Modificarpassclientes> {
                 fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
-          /*leading: IconButton(
+          leading: IconButton(
             icon: const Icon(
-              Icons.person_add,
+              Icons.arrow_back,
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Registroclientes()));
+              Navigator.pop(context);
+              /*Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));*/
             },
-          ),*/
+          ),
           /*actions: <Widget>[
             IconButton(
               icon: const Icon(
@@ -202,7 +202,7 @@ class _ModificarpassclientesState extends State<Modificarpassclientes> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          icon: const Icon(Icons.login),
+                          icon: const Icon(Icons.how_to_reg),
                         ),
                       ),
                     ],
@@ -234,8 +234,7 @@ class _ModificarpassclientesState extends State<Modificarpassclientes> {
               ),
               onPressed: () {
                 Navigator.of(context, rootNavigator: true).pop();
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyApp()));
+                Navigator.pop(context);
               },
             ),
           ],
