@@ -11,6 +11,20 @@ class Registrotiendas extends StatefulWidget {
 }
 
 class _RegistrotiendasState extends State<Registrotiendas> {
+  var _lista = [
+    'Víveres y Abarrotes',
+    'Tintorerías y Lavanderías',
+    'Latonería y Pintura',
+    'Restaurantes y Cafeterías',
+    'Farmacias y Droguerías',
+    'Misceláneas y Papelerías',
+    'Peluquería y Belleza',
+    'Ropa y Accesorios',
+    'Publicidad y Fotografía',
+    'Licorerías y Lavanderías'
+  ];
+  String _vista = "Seleccione una categoría:";
+
   final firebase = FirebaseFirestore.instance;
   TextEditingController mail = TextEditingController();
   TextEditingController razonSocial = TextEditingController();
@@ -170,7 +184,18 @@ class _RegistrotiendasState extends State<Registrotiendas> {
               Padding(
                 padding:
                     EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
-                child: TextField(
+                child: DropdownButton(
+                  items: _lista.map((String a) {
+                    return DropdownMenuItem(value: a, child: Text(a));
+                  }).toList(),
+                  onChanged: (value) => {
+                    setState(() {
+                      //_vista = value;
+                    })
+                  },
+                  hint: Text(_vista),
+                ),
+                /*child: TextField(
                   controller: categoria,
                   decoration: InputDecoration(
                     isDense: true,
@@ -180,7 +205,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
-                ),
+                ),*/
               ),
               Padding(
                 padding:

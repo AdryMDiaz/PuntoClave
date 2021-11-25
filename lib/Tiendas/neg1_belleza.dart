@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 class Neg1_Belleza extends StatelessWidget {
+  //final String docId;
+  //belleza(this.docId);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
