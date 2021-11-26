@@ -86,6 +86,14 @@ flutter:
     - images/tshirt_1280.jpg
     - images/icons8-usuario-96.png
     - images/icons8-business-64.png
+    - images/shopping_1280.jpg
+    - images/grocery_1280.jpg
+    - images/washinggreen_1280.jpg
+    - images/washingmachine_1280.jpg
+    - images/auto_1280.jpg
+    - images/gears_1280.jpg
+    - images/pizza_1280.jpg
+    - images/food_1280.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

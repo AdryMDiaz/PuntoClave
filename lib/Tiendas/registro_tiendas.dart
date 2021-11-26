@@ -33,6 +33,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
   TextEditingController telefonoCelular = TextEditingController();
   TextEditingController paginaWeb = TextEditingController();
   TextEditingController categoria = TextEditingController();
+  TextEditingController rutaFoto = TextEditingController();
   TextEditingController productos = TextEditingController();
   TextEditingController password1 = TextEditingController();
 
@@ -50,6 +51,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
         "pagina_web": paginaWeb.text,
         "categoria": categoria.text,
         "productos": productos.text,
+        "foto": rutaFoto.text,
         "contraseña": password1.text,
         "estado": true
       });
@@ -184,39 +186,28 @@ class _RegistrotiendasState extends State<Registrotiendas> {
               Padding(
                 padding:
                     EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
-                child: DropdownButton(
-                  items: _lista.map((String a) {
-                    return DropdownMenuItem(value: a, child: Text(a));
-                  }).toList(),
-                  onChanged: (value) => {
-                    setState(() {
-                      //_vista = value;
-                    })
-                  },
-                  hint: Text(_vista),
-                ),
-                /*child: TextField(
-                  controller: categoria,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    contentPadding: EdgeInsets.all(10),
-                    labelText: "Categoria Negocio",
-                    hintText: "Seleccione categoria del negocio",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                  ),
-                ),*/
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
                 child: TextField(
                   controller: productos,
                   decoration: InputDecoration(
                     isDense: true,
                     contentPadding: EdgeInsets.all(10),
                     labelText: "Productos",
-                    hintText: "Digite sus productos separados por ;",
+                    hintText: "Describa sus productos",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
+                child: TextField(
+                  controller: rutaFoto,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.all(10),
+                    labelText: "Foto Negocio",
+                    hintText: "Foto Negocio",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
@@ -241,6 +232,37 @@ class _RegistrotiendasState extends State<Registrotiendas> {
                 ),
               ),
               Padding(
+                padding:
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
+                /*child: DropdownButton(
+                  //value: _vista,
+                  underline: Container(height: 2, color: Colors.deepOrange),
+                  items: _lista.map((String a) {
+                    return DropdownMenuItem(
+                      value: a,
+                      child: Text(a),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) => {
+                    setState(() {
+                      _vista = value!;
+                    })
+                  },
+                  hint: Text(_vista),
+                ),*/
+                child: TextField(
+                  controller: categoria,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.all(10),
+                    labelText: "Categoria Negocio",
+                    hintText: "Seleccione categoria del negocio",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                  ),
+                ),
+              ),
+              Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -261,6 +283,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
                           paginaWeb.clear();
                           categoria.clear();
                           productos.clear();
+                          rutaFoto.clear();
                           password1.clear();
                         },
                         label: const Text(

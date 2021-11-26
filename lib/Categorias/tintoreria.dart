@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 class Tintoreria extends StatelessWidget {
+  String categoria = "Tintorerias y Lavanderias";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,7 +53,7 @@ class Tintoreria extends StatelessWidget {
                         .get("categoria")
                         .toString()
                         .toUpperCase()
-                        .contains('Tintorerías y Lavanderías'.toUpperCase())) {
+                        .contains(categoria.toUpperCase())) {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
@@ -251,7 +253,9 @@ class Tintoreria extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12.0),
                                   child: Image.asset(
-                                    'images/washing_machine_1280.jpg',
+                                    //'images/shopping_1280.jpg',
+                                    "images/" +
+                                        snapshot.data!.docs[index].get("foto"),
                                     width: 110.0,
                                     fit: BoxFit.cover,
                                   ),
