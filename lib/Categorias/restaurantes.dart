@@ -16,9 +16,9 @@ class Restaurantes extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Restaurantes y Cafeterias',
-            style: TextStyle(
+          title: Text(
+            categoria,
+            style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
@@ -49,10 +49,11 @@ class Restaurantes extends StatelessWidget {
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (BuildContext context, int index) {
                     if (snapshot.data!.docs[index]
-                        .get("categoria")
-                        .toString()
-                        .toUpperCase()
-                        .contains(categoria.toUpperCase())) {
+                            .get("categoria")
+                            .toString()
+                            .toUpperCase()
+                            .contains(categoria.toUpperCase()) &&
+                        snapshot.data!.docs[index].get("estado") == true) {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
@@ -64,8 +65,7 @@ class Restaurantes extends StatelessWidget {
                           child: Stack(
                             children: [
                               Container(
-                                margin: const EdgeInsets.fromLTRB(
-                                    20.0, 5.0, 20.0, 5.0),
+                                margin: const EdgeInsets.all(5.0),
                                 height: 200.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -79,7 +79,7 @@ class Restaurantes extends StatelessWidget {
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
-                                      120.0, 10.0, 10.0, 20.0),
+                                      130.0, 10.0, 10.0, 10.0),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
@@ -97,7 +97,7 @@ class Restaurantes extends StatelessWidget {
                                               snapshot.data!.docs[index]
                                                   .get("razon_social"),
                                               style: const TextStyle(
-                                                  fontSize: 13.0,
+                                                  fontSize: 15.0,
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           ),
@@ -114,7 +114,7 @@ class Restaurantes extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 150.0,
+                                            width: 120.0,
                                             child: Text(
                                               snapshot.data!.docs[index]
                                                   .get("direccion_fisica"),
@@ -133,7 +133,7 @@ class Restaurantes extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 150.0,
+                                            width: 120.0,
                                             child: Text(
                                               snapshot.data!.docs[index]
                                                   .get("correo_electronico"),
@@ -152,7 +152,7 @@ class Restaurantes extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 150.0,
+                                            width: 120.0,
                                             child: Text(
                                               snapshot.data!.docs[index]
                                                   .get("telefono_fijo"),
@@ -171,7 +171,7 @@ class Restaurantes extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 150.0,
+                                            width: 120.0,
                                             child: Text(
                                               snapshot.data!.docs[index]
                                                   .get("telefono_celular"),
@@ -190,7 +190,7 @@ class Restaurantes extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 150.0,
+                                            width: 120.0,
                                             child: Text(
                                               snapshot.data!.docs[index]
                                                   .get("pagina_web"),
@@ -209,7 +209,7 @@ class Restaurantes extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 150.0,
+                                            width: 120.0,
                                             child: Text(
                                               snapshot.data!.docs[index]
                                                   .get("productos"),
@@ -247,7 +247,7 @@ class Restaurantes extends StatelessWidget {
                               ),
                               Positioned(
                                 top: 5.0,
-                                left: 18.0,
+                                left: 5.0,
                                 bottom: 5.0,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12.0),
@@ -255,7 +255,7 @@ class Restaurantes extends StatelessWidget {
                                     //'images/shopping_1280.jpg',
                                     "images/" +
                                         snapshot.data!.docs[index].get("foto"),
-                                    width: 110.0,
+                                    width: 125.0,
                                     fit: BoxFit.cover,
                                   ),
                                 ),

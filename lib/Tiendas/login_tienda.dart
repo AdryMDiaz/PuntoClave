@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:puntoclave/Productos/registro_productos.dart';
 import 'package:puntoclave/Tiendas/modificar_pass_neg.dart';
 import 'package:puntoclave/Tiendas/registro_tiendas.dart';
 
 import '../main.dart';
+import 'gestiontiendas.dart';
 
 class Logintiendas extends StatefulWidget {
   const Logintiendas({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _LogintiendasState extends State<Logintiendas> {
               //print("usuario_encontrado");
               flag = 1;
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Registroproductos()));
+                  MaterialPageRoute(builder: (context) => Gestiontiendas()));
             }
           } else {
             //print("correo no encontrado");
@@ -388,7 +388,7 @@ class _LogintiendasState extends State<Logintiendas> {
                 Navigator.of(context, rootNavigator: true).pop();
 
                 final snackBar = SnackBar(
-                  content: const Text(
+                  content: Text(
                     '¡Cliente Inactivado Exitosamente!',
                     textAlign: TextAlign.center,
                   ),

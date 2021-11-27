@@ -42,7 +42,7 @@ class IndexStart extends State<Index> {
   String categoria7 = "Peluquería y Belleza";
   String categoria8 = "Ropa y Accesorios";
   String categoria9 = "Publicidad y Fotografía";
-  String categoria10 = "Licorerías y Lavanderías";
+  String categoria10 = "Licorerías";
 
   Widget build(BuildContext context) {
     Widget cateSection = Container();
