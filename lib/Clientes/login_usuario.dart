@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Clientes/modificar_cliente.dart';
 import 'package:puntoclave/Clientes/modificar_pass_cli.dart';
 import 'package:puntoclave/Clientes/registro_clientes.dart';
-import 'package:puntoclave/Productos/modulo_productos.dart';
+import 'package:puntoclave/Productos/detalle_productos.dart';
 
 import '../main.dart';
 
@@ -16,6 +17,7 @@ class Loginclientes extends StatefulWidget {
 
 class _LoginclientesState extends State<Loginclientes> {
   final firebase = FirebaseFirestore.instance;
+
   TextEditingController correo_electronico = TextEditingController();
   TextEditingController password = TextEditingController();
 
@@ -30,25 +32,45 @@ class _LoginclientesState extends State<Loginclientes> {
         int flag = 0;
         //la variable cursor temporalmente almacenará la información de la colección por cada documento existente en ella
         for (var cursor in cliente.docs) {
-          //print(cursor.get("correo_electronico"));
-          //print(cursor.get("contraseña"));
-          //print(correo_electronico.text);
-          //print(password.text);
           if (cursor.get("correo_electronico") == correo_electronico.text) {
-            // print("Correo encotrado");
             if (cursor.get("contraseña") == password.text) {
-              //print("usuario_encontrado");
-              flag = 1;
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Productos()));
+              if (cursor.get("estado") == true) {
+                flag = 1;
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => detProductos()));
+              } else {}
             }
-          } else {
-            //print("correo no encontrado");
-            //print(cursor.get("correo_electronico"));
-          }
+          } else {}
         }
         if (flag == 0) {
-          print("Usuario no encontrado");
+          print("Cliente no encontrado");
+
+          const snackBar = SnackBar(
+            content: Text(
+              'Cliente inactivo o no existe en la base de datos!',
+              textAlign: TextAlign.center,
+            ),
+            backgroundColor: Colors.black,
+            behavior: SnackBarBehavior.floating,
+            //width: 300,
+            //height: 200,
+            margin: EdgeInsets.all(60),
+            elevation: 30,
+            shape: StadiumBorder(
+                side: BorderSide(color: Colors.redAccent, width: 2)),
+            /*action: SnackBarAction(
+                    label: '',
+                    textColor: Colors.white,
+                    onPressed: () {
+                      // Some code to undo the change.
+                      Navigator.pop(context);
+                    },
+                  ),*/
+          );
+
+          // Find the ScaffoldMessenger in the widget tree
+          // and use it to show a SnackBar.
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       } else {
         print("Colección vacía");
@@ -69,42 +91,37 @@ class _LoginclientesState extends State<Loginclientes> {
         int flag = 0;
         //la variable cursor temporalmente almacenará la información de la colección por cada documento existente en ella
         for (var cursor in cliente.docs) {
-          //print(cursor.get("correo_electronico"));
-          //print(cursor.get("contraseña"));
-          //print(correo_electronico.text);
-          //print(password.text);
           if (cursor.get("correo_electronico") == correo_electronico.text) {
-            // print("Correo encotrado");
             if (cursor.get("contraseña") == password.text) {
-              //print("usuario_encontrado");
-              flag = 1;
-              print(cursor.id);
+              if (cursor.get("estado") == true) {
+                flag = 1;
+                print(cursor.id);
 
-              try {
-                await firebase
-                    .collection("Clientes")
-                    .doc(cursor.id) //traerá el id del documento
-                    .set({
-                  "correo_electronico": cursor.get("correo_electronico"),
-                  "nombre_completo": cursor.get("nombre_completo"),
-                  "direccion_envio": cursor.get("direccion_envio"),
-                  "telefono_fijo": cursor.get("telefono_fijo"),
-                  "telefono_celular": cursor.get("telefono_celular"),
-                  "contraseña": cursor.get("contraseña"),
-                  "estado": false
-                });
-              } catch (e) {
-                print(e);
-                mensaje("Error...", "" + e.toString());
-              }
+                try {
+                  await firebase
+                      .collection("Clientes")
+                      .doc(cursor.id) //traerá el id del documento
+                      .set({
+                    "correo_electronico": cursor.get("correo_electronico"),
+                    "nombre_completo": cursor.get("nombre_completo"),
+                    "direccion_envio": cursor.get("direccion_envio"),
+                    "telefono_fijo": cursor.get("telefono_fijo"),
+                    "telefono_celular": cursor.get("telefono_celular"),
+                    "contraseña": cursor.get("contraseña"),
+                    "estado": false
+                  });
+                  mensaje("Inactivacion Exitosa",
+                      "Cliente inactivado exitosamente");
+                } catch (e) {
+                  print(e);
+                  mensaje("Error...", "" + e.toString());
+                }
+              } else {}
             }
-          } else {
-            //print("correo no encontrado");
-            //print(cursor.get("correo_electronico"));
-          }
+          } else {}
         }
         if (flag == 0) {
-          print("Usuario no encontrado");
+          print("Cliente no encontrado");
         }
       } else {
         print("Colección vacía");
@@ -231,7 +248,7 @@ class _LoginclientesState extends State<Loginclientes> {
                   ),
                 ),
               ),
-              /*Padding(
+              Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
                   child: Row(
@@ -244,9 +261,14 @@ class _LoginclientesState extends State<Loginclientes> {
                         child: FloatingActionButton.extended(
                           //backgroundColor: Colors.white60,
                           //foregroundColor: Colors.brown,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Modificarcliente()));
+                          },
                           label: const Text(
-                            'Modificar Usuario',
+                            'Modificar Cliente',
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
@@ -258,7 +280,7 @@ class _LoginclientesState extends State<Loginclientes> {
                     ],
                   ),
                 ),
-              ),*/
+              ),
               Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
@@ -308,7 +330,7 @@ class _LoginclientesState extends State<Loginclientes> {
                           //foregroundColor: Colors.brown,
                           onPressed: () {
                             inactivar("Darse de baja",
-                                "¿Desea inactivar el usuario?");
+                                "¿Desea inactivar este cliente?");
                           },
                           label: const Text(
                             'Darme de Baja',
@@ -384,8 +406,8 @@ class _LoginclientesState extends State<Loginclientes> {
                 inactivarCliente();
                 Navigator.of(context, rootNavigator: true).pop();
 
-                final snackBar = SnackBar(
-                  content: const Text(
+                const snackBar = SnackBar(
+                  content: Text(
                     '¡Cliente Inactivado Exitosamente!',
                     textAlign: TextAlign.center,
                   ),
@@ -395,7 +417,7 @@ class _LoginclientesState extends State<Loginclientes> {
                   //height: 200,
                   margin: EdgeInsets.all(60),
                   elevation: 30,
-                  shape: const StadiumBorder(
+                  shape: StadiumBorder(
                       side: BorderSide(color: Colors.redAccent, width: 2)),
                   /*action: SnackBarAction(
                     label: '',

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Productos extends StatefulWidget {
+class detProductos extends StatefulWidget {
   @override
-  Product_List createState() => Product_List();
+  Product_det createState() => Product_det();
 }
 
-class Product_List extends State<Productos> {
+class Product_det extends State<detProductos> {
   String nombre = "Nombre producto y/o servicio";
 
   @override

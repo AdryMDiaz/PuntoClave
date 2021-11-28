@@ -26,44 +26,37 @@ class _ModificarpassclientesState extends State<Modificarpassclientes> {
         int flag = 0;
         //la variable cursor temporalmente almacenará la información de la colección por cada documento existente en ella
         for (var cursor in cliente.docs) {
-          //print(cursor.get("correo_electronico"));
-          //print(cursor.get("contraseña"));
-          //print(correo_electronico.text);
-          //print(password.text);
           if (cursor.get("correo_electronico") == correo_electronico.text) {
-            // print("Correo encontrado");
             if (cursor.get("contraseña") == password_actual.text) {
-              //print("usuario_encontrado");
-              flag = 1;
-              print(cursor.id);
+              if (cursor.get("estado") == true) {
+                flag = 1;
+                print(cursor.id);
 
-              try {
-                await firebase
-                    .collection("Clientes")
-                    .doc(cursor.id) //traerá el id del documento
-                    .set({
-                  "correo_electronico": cursor.get("correo_electronico"),
-                  "nombre_completo": cursor.get("nombre_completo"),
-                  "direccion_envio": cursor.get("direccion_envio"),
-                  "telefono_fijo": cursor.get("telefono_fijo"),
-                  "telefono_celular": cursor.get("telefono_celular"),
-                  "contraseña": password_nueva.text,
-                  "estado": true
-                });
-                mensaje(
-                    "Operación Exitosa", "Contraseña cambiada exitosamente");
-              } catch (e) {
-                print(e);
-                mensaje("Error...", "" + e.toString());
-              }
+                try {
+                  await firebase
+                      .collection("Clientes")
+                      .doc(cursor.id) //traerá el id del documento
+                      .set({
+                    "correo_electronico": cursor.get("correo_electronico"),
+                    "nombre_completo": cursor.get("nombre_completo"),
+                    "direccion_envio": cursor.get("direccion_envio"),
+                    "telefono_fijo": cursor.get("telefono_fijo"),
+                    "telefono_celular": cursor.get("telefono_celular"),
+                    "contraseña": password_nueva.text,
+                    "estado": true
+                  });
+                  mensaje(
+                      "Operación Exitosa", "Contraseña cambiada exitosamente");
+                } catch (e) {
+                  print(e);
+                  mensaje("Error...", "" + e.toString());
+                }
+              } else {}
             }
-          } else {
-            //print("correo no encontrado");
-            //print(cursor.get("correo_electronico"));
-          }
+          } else {}
         }
         if (flag == 0) {
-          print("Usuario no encontrado");
+          print("Cliente no encontrado");
         }
       } else {
         print("Colección vacía");

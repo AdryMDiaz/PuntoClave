@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-import '../main.dart';
+import 'package:puntoclave/Tiendas/gestiontiendas.dart';
 
 class Registroproductos extends StatefulWidget {
   const Registroproductos({Key? key}) : super(key: key);
@@ -12,7 +11,7 @@ class Registroproductos extends StatefulWidget {
 
 class _RegistroproductosState extends State<Registroproductos> {
   final firebase = FirebaseFirestore.instance;
-  TextEditingController idTienda = TextEditingController();
+  TextEditingController nombreTienda = TextEditingController();
   TextEditingController nombreProducto = TextEditingController();
   TextEditingController precioVenta = TextEditingController();
   TextEditingController iva = TextEditingController();
@@ -20,6 +19,7 @@ class _RegistroproductosState extends State<Registroproductos> {
   TextEditingController dcto = TextEditingController();
   TextEditingController categoriaProducto = TextEditingController();
   TextEditingController descripcionProducto = TextEditingController();
+  TextEditingController rutaFoto = TextEditingController();
 
   registroProductos() async {
     try {
@@ -27,7 +27,7 @@ class _RegistroproductosState extends State<Registroproductos> {
           .collection("Productos")
           .doc() //vacío automaticamente genera el id
           .set({
-        //"Id_Tienda":idTienda.text,
+        "nombre_tienda": nombreTienda.text,
         "nombre_producto": nombreProducto.text,
         "precio_Venta": precioVenta.text,
         "iva": iva.text,
@@ -35,6 +35,8 @@ class _RegistroproductosState extends State<Registroproductos> {
         "descuento": dcto.text,
         "categoria_Producto": categoriaProducto.text,
         "descripcion_Producto": descripcionProducto.text,
+        "foto_producto": rutaFoto.text,
+        "estado": true
       });
       mensaje("Registro Exitoso", "Producto creado exitosamente");
     } catch (e) {
@@ -71,23 +73,23 @@ class _RegistroproductosState extends State<Registroproductos> {
           ),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(12),
           child: Column(
             children: [
-              /*Padding(
-              padding: EdgeInsets.only(left: 15,top:15,right:15,bottom: 0),
-                 child: TextField(
-                    controller: idTienda,
-                    decoration: InputDecoration(
-                      isDense: true,
-                      labelText: "Id Tienda",
-                        hintText: "Digite id de la tienda",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)
-                        ),
-                    ),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
+                child: TextField(
+                  controller: nombreTienda,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    labelText: "Nombre Tienda",
+                    hintText: "Digite nombre de la tienda",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                  ),
                 ),
-            ),*/
+              ),
               Padding(
                 padding:
                     EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
@@ -97,7 +99,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                     labelText: "Nombre Producto",
                     hintText: "Digite el nombre del producto",
                     isDense: true,
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: EdgeInsets.all(12),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
@@ -110,7 +112,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                   controller: precioVenta,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: EdgeInsets.all(12),
                     labelText: "Precio Venta",
                     hintText: "Digite valor de venta del producto",
                     border: OutlineInputBorder(
@@ -125,7 +127,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                   controller: iva,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: EdgeInsets.all(12),
                     labelText: "Valor IVA",
                     hintText: "Digite el valor del IVA",
                     border: OutlineInputBorder(
@@ -140,7 +142,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                   controller: precioSinIva,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: EdgeInsets.all(12),
                     labelText: "Valor sin Iva",
                     hintText: "Digite valor del producto sin IVA",
                     border: OutlineInputBorder(
@@ -155,7 +157,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                   controller: dcto,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: EdgeInsets.all(12),
                     labelText: "Valor Descuento",
                     hintText: "Digite valor del descuento",
                     border: OutlineInputBorder(
@@ -170,7 +172,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                   controller: categoriaProducto,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: EdgeInsets.all(12),
                     labelText: "Categoria Producto",
                     hintText: "Seleccione categoria del producto",
                     border: OutlineInputBorder(
@@ -185,9 +187,24 @@ class _RegistroproductosState extends State<Registroproductos> {
                   controller: descripcionProducto,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: EdgeInsets.all(12),
                     labelText: "Descripcion del Producto",
                     hintText: "Digite breve descripcion del producto",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
+                child: TextField(
+                  controller: rutaFoto,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.all(12),
+                    labelText: "Foto producto",
+                    hintText: "Foto producto",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
@@ -206,6 +223,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                         onPressed: () {
                           registroProductos();
 
+                          nombreTienda.clear();
                           nombreProducto.clear();
                           precioVenta.clear();
                           iva.clear();
@@ -213,6 +231,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                           dcto.clear();
                           categoriaProducto.clear();
                           descripcionProducto.clear();
+                          rutaFoto.clear();
                         },
                         label: const Text(
                           'Crear Producto',
@@ -252,8 +271,8 @@ class _RegistroproductosState extends State<Registroproductos> {
               ),
               onPressed: () {
                 Navigator.of(context, rootNavigator: true).pop();
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyApp()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Gestiontiendas()));
               },
             ),
           ],

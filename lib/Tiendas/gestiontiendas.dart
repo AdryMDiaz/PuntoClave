@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:puntoclave/Productos/registro_productos.dart';
+import 'package:puntoclave/main.dart';
 
 class Gestiontiendas extends StatefulWidget {
   const Gestiontiendas({Key? key}) : super(key: key);
@@ -47,30 +48,6 @@ class _GestiontiendasState extends State<Gestiontiendas> {
                     height: 100,
                     child: Image.asset("images/icons8-business-64.png"),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 180.0,
-                      height: 40.0,
-                      child: FloatingActionButton.extended(
-                        onPressed: () {},
-                        label: const Text(
-                          'Modificar Tienda',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        icon: const Icon(Icons.mode_edit),
-                      ),
-                    ),
-                  ],
                 ),
               ),
               Padding(
@@ -139,6 +116,33 @@ class _GestiontiendasState extends State<Gestiontiendas> {
                         onPressed: () {},
                         label: const Text(
                           'Inactivar Producto',
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        icon: const Icon(Icons.auto_delete),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 180.0,
+                      height: 40.0,
+                      child: FloatingActionButton.extended(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => MyApp()));
+                        },
+                        label: const Text(
+                          'Cerrar Sesión',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,

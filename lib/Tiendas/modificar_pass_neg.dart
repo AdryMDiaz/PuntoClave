@@ -26,47 +26,41 @@ class _ModificarpasstiendasState extends State<Modificarpasstiendas> {
         int flag = 0;
         //la variable cursor temporalmente almacenará la información de la colección por cada documento existente en ella
         for (var cursor in tienda.docs) {
-          //print(cursor.get("correo_electronico"));
-          //print(cursor.get("contraseña"));
-          //print(correo_electronico.text);
-          //print(password.text);
           if (cursor.get("correo_electronico") == correo_electronico.text) {
-            // print("Correo encontrado");
             if (cursor.get("contraseña") == password_actual.text) {
-              //print("usuario_encontrado");
-              flag = 1;
-              print(cursor.id);
+              if (cursor.get("estado") == true) {
+                flag = 1;
+                print(cursor.id);
 
-              try {
-                await firebase
-                    .collection("Tiendas")
-                    .doc(cursor.id) //traerá el id del documento
-                    .set({
-                  "correo_electronico": cursor.get("correo_electronico"),
-                  "razon_social": cursor.get("razon_social"),
-                  "direccion_fisica": cursor.get("direccion_fisica"),
-                  "telefono_fijo": cursor.get("telefono_fijo"),
-                  "telefono_celular": cursor.get("telefono_celular"),
-                  "pagina_web": cursor.get("pagina_web"),
-                  "categoria": cursor.get("categoria"),
-                  "productos": cursor.get("productos"),
-                  "contraseña": password_nueva.text,
-                  "estado": true
-                });
-                mensaje(
-                    "Operación Exitosa", "Contraseña cambiada exitosamente");
-              } catch (e) {
-                print(e);
-                mensaje("Error...", "" + e.toString());
-              }
+                try {
+                  await firebase
+                      .collection("Tiendas")
+                      .doc(cursor.id) //traerá el id del documento
+                      .set({
+                    "correo_electronico": cursor.get("correo_electronico"),
+                    "razon_social": cursor.get("razon_social"),
+                    "direccion_fisica": cursor.get("direccion_fisica"),
+                    "telefono_fijo": cursor.get("telefono_fijo"),
+                    "telefono_celular": cursor.get("telefono_celular"),
+                    "pagina_web": cursor.get("pagina_web"),
+                    "categoria": cursor.get("categoria"),
+                    "productos": cursor.get("productos"),
+                    "foto": cursor.get("foto"),
+                    "contraseña": password_nueva.text,
+                    "estado": true
+                  });
+                  mensaje(
+                      "Operación Exitosa", "Contraseña cambiada exitosamente");
+                } catch (e) {
+                  print(e);
+                  mensaje("Error...", "" + e.toString());
+                }
+              } else {}
             }
-          } else {
-            //print("correo no encontrado");
-            //print(cursor.get("correo_electronico"));
-          }
+          } else {}
         }
         if (flag == 0) {
-          print("Usuario no encontrado");
+          print("Tienda no encontrada");
         }
       } else {
         print("Colección vacía");

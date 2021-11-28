@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Productos/list_productos.dart';
 
 import '../main.dart';
 
@@ -64,10 +65,10 @@ class Belleza extends StatelessWidget {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
-                            /*Navigator.push(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Neg1_Belleza()));*/
+                                    builder: (context) => Listproductos()));
                           },
                           child: Stack(
                             children: [

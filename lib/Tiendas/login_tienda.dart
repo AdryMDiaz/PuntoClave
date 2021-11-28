@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:puntoclave/Tiendas/modificar_pass_neg.dart';
+import 'package:puntoclave/Tiendas/modificar_tienda.dart';
 import 'package:puntoclave/Tiendas/registro_tiendas.dart';
 
 import '../main.dart';
@@ -16,6 +17,7 @@ class Logintiendas extends StatefulWidget {
 
 class _LogintiendasState extends State<Logintiendas> {
   final firebase = FirebaseFirestore.instance;
+
   TextEditingController correo_electronico = TextEditingController();
   TextEditingController password = TextEditingController();
 
@@ -30,25 +32,45 @@ class _LogintiendasState extends State<Logintiendas> {
         int flag = 0;
         //la variable cursor temporalmente almacenará la información de la colección por cada documento existente en ella
         for (var cursor in tienda.docs) {
-          //print(cursor.get("correo_electronico"));
-          //print(cursor.get("contraseña"));
-          //print(correo_electronico.text);
-          //print(password.text);
           if (cursor.get("correo_electronico") == correo_electronico.text) {
-            // print("Correo encontrado");
             if (cursor.get("contraseña") == password.text) {
-              //print("usuario_encontrado");
-              flag = 1;
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Gestiontiendas()));
+              if (cursor.get("estado") == true) {
+                flag = 1;
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Gestiontiendas()));
+              } else {}
             }
-          } else {
-            //print("correo no encontrado");
-            //print(cursor.get("correo_electronico"));
-          }
+          } else {}
         }
         if (flag == 0) {
           print("Tienda no encontrada");
+
+          const snackBar = SnackBar(
+            content: Text(
+              'Negocio inactivo o no existe en la base de datos!',
+              textAlign: TextAlign.center,
+            ),
+            backgroundColor: Colors.black,
+            behavior: SnackBarBehavior.floating,
+            //width: 300,
+            //height: 200,
+            margin: EdgeInsets.all(60),
+            elevation: 30,
+            shape: StadiumBorder(
+                side: BorderSide(color: Colors.deepOrangeAccent, width: 2)),
+            /*action: SnackBarAction(
+                    label: '',
+                    textColor: Colors.white,
+                    onPressed: () {
+                      // Some code to undo the change.
+                      Navigator.pop(context);
+                    },
+                  ),*/
+          );
+
+          // Find the ScaffoldMessenger in the widget tree
+          // and use it to show a SnackBar.
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       } else {
         print("Colección vacía");
@@ -69,45 +91,41 @@ class _LogintiendasState extends State<Logintiendas> {
         int flag = 0;
         //la variable cursor temporalmente almacenará la información de la colección por cada documento existente en ella
         for (var cursor in cliente.docs) {
-          //print(cursor.get("correo_electronico"));
-          //print(cursor.get("contraseña"));
-          //print(correo_electronico.text);
-          //print(password.text);
           if (cursor.get("correo_electronico") == correo_electronico.text) {
-            // print("Correo encotrado");
             if (cursor.get("contraseña") == password.text) {
-              //print("usuario_encontrado");
-              flag = 1;
-              print(cursor.id);
+              if (cursor.get("estado") == true) {
+                flag = 1;
+                print(cursor.id);
 
-              try {
-                await firebase
-                    .collection("Tiendas")
-                    .doc() //vacío automaticamente genera el id
-                    .set({
-                  "correo_electronico": cursor.get("mail"),
-                  "razon_social": cursor.get("razonSocial"),
-                  "direccion_fisica": cursor.get("direccion"),
-                  "telefono_fijo": cursor.get("telefonoFijo"),
-                  "telefono_celular": cursor.get("telefonoCelular"),
-                  "pagina_web": cursor.get("paginaWeb"),
-                  "categoria": cursor.get("categoria"),
-                  "productos": cursor.get("productos"),
-                  "contraseña": cursor.get("password1"),
-                });
-                mensaje("Registro Exitoso", "Negocio creado exitosamente");
-              } catch (e) {
-                print(e);
-                mensaje("Error...", "" + e.toString());
-              }
+                try {
+                  await firebase
+                      .collection("Tiendas")
+                      .doc(cursor.id) //vacío automaticamente genera el id
+                      .set({
+                    "correo_electronico": cursor.get("correo_electronico"),
+                    "razon_social": cursor.get("razon_social"),
+                    "direccion_fisica": cursor.get("direccion_fisica"),
+                    "telefono_fijo": cursor.get("telefono_fijo"),
+                    "telefono_celular": cursor.get("telefono_celular"),
+                    "pagina_web": cursor.get("pagina_web"),
+                    "categoria": cursor.get("categoria"),
+                    "productos": cursor.get("productos"),
+                    "contraseña": cursor.get("contraseña"),
+                    "foto": cursor.get("foto"),
+                    "estado": false,
+                  });
+                  mensaje("Inactivacion Exitosa",
+                      "Negocio inactivado exitosamente");
+                } catch (e) {
+                  print(e);
+                  mensaje("Error...", "" + e.toString());
+                }
+              } else {}
             }
-          } else {
-            //print("correo no encontrado");
-            //print(cursor.get("correo_electronico"));
-          }
+          } else {}
         }
         if (flag == 0) {
-          print("Usuario no encontrado");
+          print("Tienda no encontrada");
         }
       } else {
         print("Colección vacía");
@@ -165,7 +183,7 @@ class _LogintiendasState extends State<Logintiendas> {
                   child: Container(
                     width: 100,
                     height: 100,
-                    child: Image.asset("images/icons8-business-64.png"),
+                    child: Image.asset("images/icons8-business-641.png"),
                   ),
                 ),
               ),
@@ -234,7 +252,7 @@ class _LogintiendasState extends State<Logintiendas> {
                   ),
                 ),
               ),
-              /*Padding(
+              Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
                   child: Row(
@@ -247,7 +265,12 @@ class _LogintiendasState extends State<Logintiendas> {
                         child: FloatingActionButton.extended(
                           //backgroundColor: Colors.white60,
                           //foregroundColor: Colors.brown,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Modificartienda()));
+                          },
                           label: const Text(
                             'Modificar Tienda',
                             style: TextStyle(
@@ -261,7 +284,7 @@ class _LogintiendasState extends State<Logintiendas> {
                     ],
                   ),
                 ),
-              ),*/
+              ),
               Padding(
                 padding: EdgeInsets.all(10),
                 child: Center(
@@ -387,18 +410,18 @@ class _LogintiendasState extends State<Logintiendas> {
                 inactivarTienda();
                 Navigator.of(context, rootNavigator: true).pop();
 
-                final snackBar = SnackBar(
+                const snackBar = SnackBar(
                   content: Text(
-                    '¡Cliente Inactivado Exitosamente!',
+                    '¡Tienda Inactivada Exitosamente!',
                     textAlign: TextAlign.center,
                   ),
-                  backgroundColor: Colors.deepOrange,
+                  backgroundColor: Colors.black,
                   behavior: SnackBarBehavior.floating,
                   //width: 300,
                   //height: 200,
                   margin: EdgeInsets.all(60),
                   elevation: 30,
-                  shape: const StadiumBorder(
+                  shape: StadiumBorder(
                       side:
                           BorderSide(color: Colors.deepOrangeAccent, width: 2)),
                   /*action: SnackBarAction(
