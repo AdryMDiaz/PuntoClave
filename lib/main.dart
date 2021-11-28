@@ -59,6 +59,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //debugShowCheckedModeBanner: false,
       body: Center(
         child: screens.elementAt(_selectedIndex),
       ),

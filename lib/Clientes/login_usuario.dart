@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:puntoclave/Clientes/modificar_cliente.dart';
 import 'package:puntoclave/Clientes/modificar_pass_cli.dart';
 import 'package:puntoclave/Clientes/registro_clientes.dart';
-import 'package:puntoclave/Productos/detalle_productos.dart';
 
 import '../main.dart';
 
@@ -36,8 +35,8 @@ class _LoginclientesState extends State<Loginclientes> {
             if (cursor.get("contraseña") == password.text) {
               if (cursor.get("estado") == true) {
                 flag = 1;
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => detProductos()));
+                /*Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => detProductos()));*/
               } else {}
             }
           } else {}

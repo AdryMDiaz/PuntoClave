@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Productos/detalle_productos.dart';
 
 import '../main.dart';
-import 'detalle_productos.dart';
 
 class Listproductos extends StatefulWidget {
   const Listproductos({Key? key}) : super(key: key);
@@ -15,6 +15,7 @@ class Listproductos extends StatefulWidget {
 class _ListproductosState extends State<Listproductos> {
   String nombreTienda = "De Todito";
   String categoria = "Viveres y Abarrotes";
+  String idDoc = "";
 
   @override
   Widget build(BuildContext context) {
@@ -93,10 +94,13 @@ class _ListproductosState extends State<Listproductos> {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
+                            //snapshot.data!.docs[index].id;
+                            this.idDoc = snapshot.data!.docs[index].id;
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => detProductos()));
+                                    builder: (context) =>
+                                        detProductos(this.idDoc)));
                           },
                           child: Stack(
                             children: [
@@ -129,7 +133,7 @@ class _ListproductosState extends State<Listproductos> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 160.0,
+                                            width: 170.0,
                                             child: Text(
                                               snapshot.data!.docs[index]
                                                   .get("nombre_producto"),
@@ -147,9 +151,9 @@ class _ListproductosState extends State<Listproductos> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 160.0,
+                                            width: 170.0,
                                             child: Text(
-                                              "Precio: " +
+                                              "Valor: " +
                                                   snapshot.data!.docs[index]
                                                       .get("precio_Sin_Iva") +
                                                   " COP",
@@ -168,7 +172,7 @@ class _ListproductosState extends State<Listproductos> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 160.0,
+                                            width: 170.0,
                                             child: Text(
                                               "IVA: " +
                                                   snapshot.data!.docs[index]
@@ -189,9 +193,9 @@ class _ListproductosState extends State<Listproductos> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 160.0,
+                                            width: 170.0,
                                             child: Text(
-                                              "Precio Total: " +
+                                              "Valor Total: " +
                                                   snapshot.data!.docs[index]
                                                       .get("precio_Venta") +
                                                   " COP",
@@ -278,240 +282,3 @@ class _ListproductosState extends State<Listproductos> {
     );
   }
 }
-
-/*
-body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
-                    height: 115.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 10.0,
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.fromLTRB(120.0, 10.0, 10.0, 5.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 110.0,
-                                child: const Text(
-                                  'Servicio 1',
-                                  style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 80.0,
-                                child: const Text(
-                                  'Precio: ',
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('IVA: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Precio Total: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          //const Text('Cantidad +1-'),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 150.0,
-                                height: 25.0,
-                                child: FloatingActionButton.extended(
-                                  backgroundColor: Colors.white60,
-                                  foregroundColor: Colors.pinkAccent,
-                                  onPressed: () {
-                                    print('Ir a carrito de compras');
-                                    //Navigator.pop(context);
-                                  },
-                                  label: const Text(
-                                    'Añadir al Carrito',
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w900),
-                                  ),
-                                  icon: const Icon(Icons.add_shopping_cart),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 5.0,
-                    left: 18.0,
-                    bottom: 5.0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12.0),
-                      child: Image.asset(
-                        'images/beauty_salon_1280.jpg',
-                        width: 110.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Stack(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
-                    height: 115.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 10.0,
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.fromLTRB(120.0, 10.0, 10.0, 5.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 110.0,
-                                child: const Text(
-                                  'Servicio 2',
-                                  style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 80.0,
-                                child: const Text(
-                                  'Precio: ',
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('IVA: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          const Text('Precio Total: '),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          //const Text('Cantidad +1-'),
-                          const SizedBox(
-                            height: 1.0,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 150.0,
-                                height: 25.0,
-                                child: FloatingActionButton.extended(
-                                  backgroundColor: Colors.white60,
-                                  foregroundColor: Colors.pinkAccent,
-                                  onPressed: () {
-                                    print('Ir a carrito de compras');
-                                    //Navigator.pop(context);
-                                  },
-                                  label: const Text(
-                                    'Añadir al Carrito',
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w900),
-                                  ),
-                                  icon: const Icon(Icons.add_shopping_cart),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 5.0,
-                    left: 18.0,
-                    bottom: 5.0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12.0),
-                      child: Image.asset(
-                        'images/beauty_salon_1280.jpg',
-                        width: 110.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}*/

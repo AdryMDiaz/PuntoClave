@@ -1,12 +1,58 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class detProductos extends StatefulWidget {
+  final String docId;
+  detProductos(this.docId);
+
   @override
   Product_det createState() => Product_det();
 }
 
 class Product_det extends State<detProductos> {
-  String nombre = "Nombre producto y/o servicio";
+  //String nombre = "Nombre producto y/o servicio";
+
+  String logo = "";
+  String titulo = "";
+  String valor = "";
+  String iva = "";
+  String total = "";
+  String descripcion = "";
+  String tienda = "";
+  String categoria = "";
+  String dcto = "";
+
+  Product_det() {
+    buscarDoc();
+  }
+
+  buscarDoc() async {
+    try {
+      CollectionReference ref =
+          FirebaseFirestore.instance.collection("Productos");
+      QuerySnapshot producto = await ref.get();
+
+      if (producto.docs.length != 0) {
+        for (var cursor in producto.docs) {
+          if (cursor.id == widget.docId) {
+            this.logo = cursor.get("foto_producto");
+            this.titulo = cursor.get("nombre_producto");
+            this.valor = cursor.get("precio_Sin_Iva");
+            this.iva = cursor.get("iva");
+            this.total = cursor.get("precio_Venta");
+            this.dcto = cursor.get("descuento");
+            this.tienda = cursor.get("nombre_tienda");
+            this.categoria = cursor.get("categoria_Producto");
+            this.descripcion = cursor.get("descripcion_Producto");
+
+            print(widget.docId + " id importado");
+          }
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +68,10 @@ class Product_det extends State<detProductos> {
                 /*2*/
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: const Text(
-                    'Valor: 25.200 COP',
-                    style: TextStyle(
+                  child: Text(
+                    'Valor: ' + valor + ' COP',
+                    //'Valor: 25.200 COP',
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -32,9 +79,10 @@ class Product_det extends State<detProductos> {
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: const Text(
-                    'IVA: 4.800 COP',
-                    style: TextStyle(
+                  child: Text(
+                    'Valor: ' + iva + ' COP',
+                    //'IVA: 4.800 COP',
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -42,16 +90,37 @@ class Product_det extends State<detProductos> {
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: const Text(
-                    'Valor Total: 30.000 COP',
-                    style: TextStyle(
+                  child: Text(
+                    'Valor: ' + total + ' COP',
+                    //'Valor Total: 30.000 COP',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    'Dcto: ' + dcto + ' COP',
+                    //'Valor Total: 30.000 COP',
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Text(
-                  'Masculino',
+                  tienda,
+                  //'Masculino',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[500],
+                  ),
+                ),
+                Text(
+                  categoria,
+                  //'Masculino',
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.grey[500],
@@ -89,8 +158,9 @@ class Product_det extends State<detProductos> {
                   ),
                 ),
                 Text(
-                  "Breve descripción del producto y/o servicio donde se específique"
-                  " las características más importantes.",
+                  descripcion,
+                  /*"Breve descripción del producto y/o servicio donde se específique"
+                  " las características más importantes.",*/
                   textAlign: TextAlign.justify,
                   softWrap: true,
                   style: TextStyle(
@@ -106,7 +176,7 @@ class Product_det extends State<detProductos> {
     );
 
     Widget bottomSection = Container(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -141,7 +211,7 @@ class Product_det extends State<detProductos> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            nombre,
+            titulo,
             style: const TextStyle(
                 color: Colors.white60,
                 fontWeight: FontWeight.bold,
@@ -161,7 +231,7 @@ class Product_det extends State<detProductos> {
         body: ListView(
           children: [
             Image.asset(
-              'images/tshirt_1280.jpg',
+              'images/' + logo,
               width: 600,
               height: 240,
               fit: BoxFit.cover,

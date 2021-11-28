@@ -49,7 +49,7 @@ class IndexStart extends State<Index> {
 
     return MaterialApp(
       title: 'PuntoClave',
-      //debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       //home:HomePage()
       theme: ThemeData(
         primarySwatch: Colors.red,
