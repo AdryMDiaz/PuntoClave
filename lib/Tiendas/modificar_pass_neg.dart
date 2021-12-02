@@ -47,7 +47,8 @@ class _ModificarpasstiendasState extends State<Modificarpasstiendas> {
                     "productos": cursor.get("productos"),
                     "foto": cursor.get("foto"),
                     "contraseña": password_nueva.text,
-                    "estado": true
+                    "estado": true,
+                    "activo": false
                   });
                   mensaje(
                       "Operación Exitosa", "Contraseña cambiada exitosamente");

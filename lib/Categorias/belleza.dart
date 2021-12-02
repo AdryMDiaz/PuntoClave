@@ -5,7 +5,16 @@ import 'package:puntoclave/Productos/list_productos.dart';
 
 import '../main.dart';
 
-class Belleza extends StatelessWidget {
+class Belleza extends StatefulWidget {
+  //const Listproductos({Key? key}) : super(key: key);
+  //final String idTienda;
+  //Belleza(this.idTienda);
+
+  @override
+  _BellezaState createState() => _BellezaState();
+}
+
+class _BellezaState extends State<Belleza> {
   String categoria = "Peluqueria y Belleza";
 
   @override
@@ -65,10 +74,13 @@ class Belleza extends StatelessWidget {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
+                            String idTienda = snapshot.data!.docs[index].id;
+                            print(snapshot.data!.docs[index].id);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Listproductos()));
+                                    builder: (context) =>
+                                        Listproductos(idTienda)));
                           },
                           child: Stack(
                             children: [

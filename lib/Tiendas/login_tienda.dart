@@ -21,6 +21,15 @@ class _LogintiendasState extends State<Logintiendas> {
   TextEditingController correo_electronico = TextEditingController();
   TextEditingController password = TextEditingController();
 
+  TextEditingController razonSocial = TextEditingController();
+  TextEditingController direccion = TextEditingController();
+  TextEditingController telefonoFijo = TextEditingController();
+  TextEditingController telefonoCelular = TextEditingController();
+  TextEditingController paginaWeb = TextEditingController();
+  TextEditingController categoria = TextEditingController();
+  TextEditingController rutaFoto = TextEditingController();
+  TextEditingController productos = TextEditingController();
+
   validarDatos() async {
     try {
       CollectionReference ref = FirebaseFirestore.instance
@@ -36,8 +45,37 @@ class _LogintiendasState extends State<Logintiendas> {
             if (cursor.get("contraseña") == password.text) {
               if (cursor.get("estado") == true) {
                 flag = 1;
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Gestiontiendas()));
+                print(cursor.id);
+
+                try {
+                  await firebase
+                      .collection("Tiendas")
+                      .doc(cursor.id) //traerá el id del documento
+                      .set({
+                    "correo_electronico": cursor.get("correo_electronico"),
+                    "razon_social": cursor.get("razon_social"),
+                    "direccion_fisica": cursor.get("direccion_fisica"),
+                    "telefono_fijo": cursor.get("telefono_fijo"),
+                    "telefono_celular": cursor.get("telefono_celular"),
+                    "pagina_web": cursor.get("pagina_web"),
+                    "categoria": cursor.get("categoria"),
+                    "productos": cursor.get("productos"),
+                    "foto": cursor.get("foto"),
+                    "contraseña": cursor.get("contraseña"),
+                    "estado": true,
+                    "activo": true
+                  });
+                  mensaje1("Ingreso Exitoso",
+                      "Bienvenido " + cursor.get("razon_social"));
+                } catch (e) {
+                  print(e);
+                  mensaje1("Error...", "" + e.toString());
+                }
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Gestiontiendas(cursor.id)));
               } else {}
             }
           } else {}
@@ -479,6 +517,32 @@ class _LogintiendasState extends State<Logintiendas> {
                 Navigator.of(context, rootNavigator: true).pop();
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => MyApp()));
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void mensaje1(String titulo, String mess) {
+    showDialog(
+      context: context,
+      builder: (builcontex) {
+        return AlertDialog(
+          title: Text(titulo),
+          content: Text(mess),
+          actions: [
+            RaisedButton(
+              child: const Text(
+                "Aceptar",
+                style: TextStyle(
+                  color: Colors.orange,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context, rootNavigator: true).pop();
               },
             ),
           ],

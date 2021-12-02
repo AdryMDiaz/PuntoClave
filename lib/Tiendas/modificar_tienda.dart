@@ -29,6 +29,7 @@ class _ModificartiendaState extends State<Modificartienda> {
   String pass = "";
   String correo = "";
   bool status = false;
+  bool active = false;
 
   buscarDatos() async {
     try {
@@ -58,6 +59,7 @@ class _ModificartiendaState extends State<Modificartienda> {
                 this.correo = cursor.get("correo_electronico");
                 this.pass = cursor.get("contraseña");
                 this.status = cursor.get("estado");
+                this.active = cursor.get("activo");
               } else {}
             }
           } else {}
@@ -117,6 +119,7 @@ class _ModificartiendaState extends State<Modificartienda> {
         "correo_electronico": this.correo,
         "estado": this.status,
         "contraseña": this.pass,
+        "activo": this.active,
       });
       mensaje("Modificación Exitosa", "Negocio modificado exitosamente");
     } catch (e) {

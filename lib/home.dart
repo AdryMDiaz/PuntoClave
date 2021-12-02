@@ -10,7 +10,6 @@ import 'package:puntoclave/Categorias/restaurantes.dart';
 import 'package:puntoclave/Categorias/ropa.dart';
 import 'package:puntoclave/Categorias/tintoreria.dart';
 import 'package:puntoclave/Categorias/viveres.dart';
-import 'package:puntoclave/Clientes/menulateral.dart';
 import 'package:puntoclave/search.dart';
 
 /*void main() {
@@ -82,7 +81,7 @@ class IndexStart extends State<Index> {
             ),
           ],
         ),
-        drawer: MenuLateral(),
+        //drawer: MenuLateral(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),

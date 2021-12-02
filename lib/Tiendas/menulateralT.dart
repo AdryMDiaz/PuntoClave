@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MenuLateral extends StatelessWidget {
+class MenuLateralT extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,7 +18,9 @@ class MenuLateral extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.person),
+            leading: Icon(
+              Icons.person,
+            ),
             title: Text('Mi Cuenta'),
           ),
           ListTile(

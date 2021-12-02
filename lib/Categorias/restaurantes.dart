@@ -58,10 +58,12 @@ class Restaurantes extends StatelessWidget {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
+                            String idTienda= snapshot.data!.docs[index].id;
+                            print(snapshot.data!.docs[index].id);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Listproductos()));
+                                    builder: (context) => Listproductos(idTienda)));
                           },
                           child: Stack(
                             children: [

@@ -21,6 +21,7 @@ class Product_det extends State<detProductos> {
   String tienda = "";
   String categoria = "";
   String dcto = "";
+  String idTienda = "";
 
   Product_det() {
     buscarDoc();
@@ -44,8 +45,7 @@ class Product_det extends State<detProductos> {
             this.tienda = cursor.get("nombre_tienda");
             this.categoria = cursor.get("categoria_Producto");
             this.descripcion = cursor.get("descripcion_Producto");
-
-            print(widget.docId + " id importado");
+            this.idTienda = cursor.get("idTienda");
           }
         }
       }
@@ -111,7 +111,7 @@ class Product_det extends State<detProductos> {
                   ),
                 ),
                 Text(
-                  tienda,
+                  "Nombre Negocio: " + tienda,
                   //'Masculino',
                   style: TextStyle(
                     fontSize: 13,
@@ -119,7 +119,7 @@ class Product_det extends State<detProductos> {
                   ),
                 ),
                 Text(
-                  categoria,
+                  "Categoria: " + categoria,
                   //'Masculino',
                   style: TextStyle(
                     fontSize: 13,

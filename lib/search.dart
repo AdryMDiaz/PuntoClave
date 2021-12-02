@@ -61,7 +61,8 @@ class search extends SearchDelegate {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Listproductos()));
+                              builder: (context) => Listproductos(
+                                  snapshot.data!.docs[index].id)));
                     },
                     child: Stack(
                       children: [

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:puntoclave/Tiendas/gestiontiendas.dart';
 
 class Registroproductos extends StatefulWidget {
-  const Registroproductos({Key? key}) : super(key: key);
+  //const Registroproductos({Key? key}) : super(key: key);
+  final String TiendaId;
+  Registroproductos(this.TiendaId);
 
   @override
   _RegistroproductosState createState() => _RegistroproductosState();
@@ -36,7 +38,8 @@ class _RegistroproductosState extends State<Registroproductos> {
         "categoria_Producto": categoriaProducto.text,
         "descripcion_Producto": descripcionProducto.text,
         "foto_producto": rutaFoto.text,
-        "estado": true
+        "estado": true,
+        "idTienda": widget.TiendaId
       });
       mensaje("Registro Exitoso", "Producto creado exitosamente");
     } catch (e) {
@@ -271,8 +274,10 @@ class _RegistroproductosState extends State<Registroproductos> {
               ),
               onPressed: () {
                 Navigator.of(context, rootNavigator: true).pop();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Gestiontiendas()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Gestiontiendas(widget.TiendaId)));
               },
             ),
           ],

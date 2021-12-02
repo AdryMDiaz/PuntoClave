@@ -6,16 +6,36 @@ import 'package:puntoclave/Productos/detalle_productos.dart';
 import '../main.dart';
 
 class Listproductos extends StatefulWidget {
-  const Listproductos({Key? key}) : super(key: key);
+  //const Listproductos({Key? key}) : super(key: key);
+  final String TiendaId;
+  Listproductos(this.TiendaId);
 
   @override
   _ListproductosState createState() => _ListproductosState();
 }
 
 class _ListproductosState extends State<Listproductos> {
-  String nombreTienda = "De Todito";
-  String categoria = "Viveres y Abarrotes";
   String idDoc = "";
+  String nombreTienda = "";
+
+  buscarDoc() async {
+    try {
+      CollectionReference ref =
+          FirebaseFirestore.instance.collection("Tiendas");
+      QuerySnapshot tienda = await ref.get();
+
+      if (tienda.docs.length != 0) {
+        for (var cursor in tienda.docs) {
+          if (cursor.id == widget.TiendaId) {
+            this.nombreTienda = cursor.get("razon_social");
+            print(cursor.get(nombreTienda));
+          }
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,19 +103,17 @@ class _ListproductosState extends State<Listproductos> {
                 return ListView.builder(
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (BuildContext context, int index) {
-                    if (snapshot.data!.docs[index]
-                            .get("nombre_tienda")
-                            .toString()
-                            .toUpperCase()
-                            .contains(nombreTienda.toUpperCase()) &&
-                        snapshot.data!.docs[index].get("estado") == true &&
-                        snapshot.data!.docs[index].get("categoria_Producto") ==
-                            categoria) {
+                    if (snapshot.data!.docs[index].get("idTienda") ==
+                            widget.TiendaId &&
+                        snapshot.data!.docs[index].get("estado") == true) {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
-                            //snapshot.data!.docs[index].id;
+                            buscarDoc();
                             this.idDoc = snapshot.data!.docs[index].id;
+                            print(idDoc);
+                            print(widget.TiendaId);
+                            print(nombreTienda);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

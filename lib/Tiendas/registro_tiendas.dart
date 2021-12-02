@@ -11,7 +11,7 @@ class Registrotiendas extends StatefulWidget {
 }
 
 class _RegistrotiendasState extends State<Registrotiendas> {
-  var _lista = [
+  /*var _lista = [
     'Víveres y Abarrotes',
     'Tintorerías y Lavanderías',
     'Latonería y Pintura',
@@ -23,7 +23,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
     'Publicidad y Fotografía',
     'Licorerías y Lavanderías'
   ];
-  String _vista = "Seleccione una categoría:";
+  String _vista = "Seleccione una categoría:";*/
 
   final firebase = FirebaseFirestore.instance;
   TextEditingController mail = TextEditingController();
@@ -36,6 +36,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
   TextEditingController rutaFoto = TextEditingController();
   TextEditingController productos = TextEditingController();
   TextEditingController password1 = TextEditingController();
+  TextEditingController activo = TextEditingController();
 
   registroTiendas() async {
     try {
@@ -53,7 +54,8 @@ class _RegistrotiendasState extends State<Registrotiendas> {
         "productos": productos.text,
         "foto": rutaFoto.text,
         "contraseña": password1.text,
-        "estado": true
+        "estado": true,
+        "activo": false
       });
       mensaje("Registro Exitoso", "Negocio creado exitosamente");
     } catch (e) {
