@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Productos/inactivar_producto.dart';
+import 'package:puntoclave/Productos/modificar_producto.dart';
 import 'package:puntoclave/Productos/registro_productos.dart';
 import 'package:puntoclave/main.dart';
 
@@ -26,6 +28,8 @@ class _GestiontiendasState extends State<Gestiontiendas> {
   TextEditingController categoria = TextEditingController();
   TextEditingController rutaFoto = TextEditingController();
   TextEditingController productos = TextEditingController();
+
+  String idProducto = "";
 
   cerrarSesion() async {
     try {
@@ -89,7 +93,7 @@ class _GestiontiendasState extends State<Gestiontiendas> {
           ),
           leading: IconButton(
             icon: const Icon(
-              Icons.post_add,
+              Icons.add_circle,
             ),
             onPressed: () {
               Navigator.push(
@@ -99,6 +103,19 @@ class _GestiontiendasState extends State<Gestiontiendas> {
             },
           ),
           actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.mode_edit,
+              ),
+              tooltip: "Modificar Producto",
+              onPressed: () {
+                cerrarSesion();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Modificarproducto()));
+              },
+            ),
             IconButton(
               icon: const Icon(
                 Icons.logout,
@@ -125,8 +142,7 @@ class _GestiontiendasState extends State<Gestiontiendas> {
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (BuildContext context, int index) {
                     if (snapshot.data!.docs[index].get("idTienda") ==
-                            widget.docId &&
-                        snapshot.data!.docs[index].get("estado") == true) {
+                        widget.docId) {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
@@ -170,17 +186,20 @@ class _GestiontiendasState extends State<Gestiontiendas> {
                                     FloatingActionButton(
                                       backgroundColor: Colors.white60,
                                       foregroundColor: Colors.purpleAccent,
-                                      onPressed: () {},
-                                      child: const Icon(Icons.mode_edit),
+                                      onPressed: () {
+                                        this.idProducto =
+                                            snapshot.data!.docs[index].id;
+                                        print(this.idProducto);
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    inacProducto(
+                                                        this.idProducto)));
+                                      },
+                                      child: const Icon(Icons.auto_delete),
                                       tooltip: "Modificar producto",
                                     ),
-                                    FloatingActionButton(
-                                      backgroundColor: Colors.white60,
-                                      foregroundColor: Colors.purpleAccent,
-                                      onPressed: () {},
-                                      child: const Icon(Icons.auto_delete),
-                                      tooltip: "Eliminar producto",
-                                    )
                                   ],
                                 ),
                               )

@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Productos/objeto_producto.dart';
 
 class detProductos extends StatefulWidget {
-  final String docId;
-  detProductos(this.docId);
+  final ObjetoProducto productoObj;
+  detProductos(this.productoObj);
+  //final String docId;
+  //detProductos(this.docId);
 
   @override
   Product_det createState() => Product_det();
@@ -11,8 +14,9 @@ class detProductos extends StatefulWidget {
 
 class Product_det extends State<detProductos> {
   //String nombre = "Nombre producto y/o servicio";
+  ObjetoProducto productoObj = new ObjetoProducto();
 
-  String logo = "";
+  /*String logo = "";
   String titulo = "";
   String valor = "";
   String iva = "";
@@ -21,13 +25,17 @@ class Product_det extends State<detProductos> {
   String tienda = "";
   String categoria = "";
   String dcto = "";
-  String idTienda = "";
+  String idTienda = "";*/
 
   Product_det() {
-    buscarDoc();
+    //buscarDoc();
   }
 
-  buscarDoc() async {
+  //Las clases van en mayúscula
+  //Los métodos en minúscula
+  //ObjetoProducto objProducto = new ObjetoProducto();
+
+  buscarDoc(docId) async {
     try {
       CollectionReference ref =
           FirebaseFirestore.instance.collection("Productos");
@@ -35,17 +43,18 @@ class Product_det extends State<detProductos> {
 
       if (producto.docs.length != 0) {
         for (var cursor in producto.docs) {
-          if (cursor.id == widget.docId) {
-            this.logo = cursor.get("foto_producto");
-            this.titulo = cursor.get("nombre_producto");
-            this.valor = cursor.get("precio_Sin_Iva");
-            this.iva = cursor.get("iva");
-            this.total = cursor.get("precio_Venta");
-            this.dcto = cursor.get("descuento");
-            this.tienda = cursor.get("nombre_tienda");
-            this.categoria = cursor.get("categoria_Producto");
-            this.descripcion = cursor.get("descripcion_Producto");
-            this.idTienda = cursor.get("idTienda");
+          if (cursor.id == docId) {
+            productoObj.tienda = cursor.get("razon_social");
+            productoObj.logo = cursor.get("foto_producto");
+            productoObj.titulo = cursor.get("razon_social");
+            productoObj.descripcion = cursor.get("descripcion_Producto");
+            productoObj.categoria = cursor.get("categoria_Producto");
+            productoObj.dcto = cursor.get("descuento");
+            productoObj.total = cursor.get("precio_Venta");
+            productoObj.iva = cursor.get("iva");
+            productoObj.valor = cursor.get("precio_Sin_Iva");
+            productoObj.idTienda = cursor.get("idTienda");
+            productoObj.producto = cursor.get("nombre_producto");
           }
         }
       }
@@ -69,7 +78,7 @@ class Product_det extends State<detProductos> {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Valor: ' + valor + ' COP',
+                    'Valor: ' + widget.productoObj.valor + ' COP',
                     //'Valor: 25.200 COP',
                     style: const TextStyle(
                       fontSize: 16,
@@ -80,7 +89,7 @@ class Product_det extends State<detProductos> {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Valor: ' + iva + ' COP',
+                    'Valor: ' + widget.productoObj.iva + ' COP',
                     //'IVA: 4.800 COP',
                     style: const TextStyle(
                       fontSize: 16,
@@ -91,7 +100,7 @@ class Product_det extends State<detProductos> {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Valor: ' + total + ' COP',
+                    'Valor: ' + widget.productoObj.total + ' COP',
                     //'Valor Total: 30.000 COP',
                     style: const TextStyle(
                       fontSize: 16,
@@ -102,7 +111,7 @@ class Product_det extends State<detProductos> {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Dcto: ' + dcto + ' COP',
+                    'Dcto: ' + widget.productoObj.dcto + ' COP',
                     //'Valor Total: 30.000 COP',
                     style: const TextStyle(
                       fontSize: 16,
@@ -111,7 +120,7 @@ class Product_det extends State<detProductos> {
                   ),
                 ),
                 Text(
-                  "Nombre Negocio: " + tienda,
+                  "Nombre Negocio: " + widget.productoObj.tienda,
                   //'Masculino',
                   style: TextStyle(
                     fontSize: 13,
@@ -119,7 +128,7 @@ class Product_det extends State<detProductos> {
                   ),
                 ),
                 Text(
-                  "Categoria: " + categoria,
+                  "Categoria: " + widget.productoObj.categoria,
                   //'Masculino',
                   style: TextStyle(
                     fontSize: 13,
@@ -158,7 +167,7 @@ class Product_det extends State<detProductos> {
                   ),
                 ),
                 Text(
-                  descripcion,
+                  widget.productoObj.descripcion,
                   /*"Breve descripción del producto y/o servicio donde se específique"
                   " las características más importantes.",*/
                   textAlign: TextAlign.justify,
@@ -211,7 +220,7 @@ class Product_det extends State<detProductos> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            titulo,
+            widget.productoObj.titulo,
             style: const TextStyle(
                 color: Colors.white60,
                 fontWeight: FontWeight.bold,
@@ -231,7 +240,7 @@ class Product_det extends State<detProductos> {
         body: ListView(
           children: [
             Image.asset(
-              'images/' + logo,
+              'images/' + widget.productoObj.logo,
               width: 600,
               height: 240,
               fit: BoxFit.cover,

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:puntoclave/Productos/list_productos.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 
@@ -121,10 +122,20 @@ class _BellezaState extends State<Belleza> {
                                                   fontWeight: FontWeight.w600),
                                             ),
                                           ),
-                                          const Icon(
-                                            Icons.favorite_border,
-                                            color: Colors.pinkAccent,
-                                          ),
+                                          IconButton(
+                                              icon: const Icon(
+                                                Icons.favorite_border,
+                                                color: Colors.pinkAccent,
+                                              ),
+                                              onPressed: () async {
+                                                const url =
+                                                    'https://www.google.com';
+                                                if (await canLaunch(url)) {
+                                                  await launch(url);
+                                                } else {
+                                                  throw 'Could not launch $url';
+                                                }
+                                              }),
                                         ],
                                       ),
                                       Row(

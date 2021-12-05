@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:puntoclave/Productos/detalle_productos.dart';
+import 'package:puntoclave/Productos/detalle_productos1.dart';
+import 'package:puntoclave/Productos/objeto_producto.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 
@@ -17,6 +18,7 @@ class Listproductos extends StatefulWidget {
 class _ListproductosState extends State<Listproductos> {
   String idDoc = "";
   String nombreTienda = "";
+  ObjetoProducto objProducto = new ObjetoProducto();
 
   buscarDoc() async {
     try {
@@ -27,8 +29,20 @@ class _ListproductosState extends State<Listproductos> {
       if (tienda.docs.length != 0) {
         for (var cursor in tienda.docs) {
           if (cursor.id == widget.TiendaId) {
-            this.nombreTienda = cursor.get("razon_social");
-            print(cursor.get(nombreTienda));
+            //if (cursor.id == widget.TiendaId) {
+            objProducto.tienda = cursor.get("razon_social");
+            objProducto.logo = cursor.get("foto_producto");
+            objProducto.titulo = cursor.get("razon_social");
+            objProducto.descripcion = cursor.get("descripcion_Producto");
+            objProducto.categoria = cursor.get("categoria_Producto");
+            objProducto.dcto = cursor.get("descuento");
+            objProducto.total = cursor.get("precio_Venta");
+            objProducto.iva = cursor.get("iva");
+            objProducto.valor = cursor.get("precio_Sin_Iva");
+            objProducto.idTienda = cursor.get("idTienda");
+            objProducto.producto = cursor.get("nombre_producto");
+
+            print(objProducto.tienda);
           }
         }
       }
@@ -47,7 +61,7 @@ class _ListproductosState extends State<Listproductos> {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            nombreTienda,
+            objProducto.tienda,
             style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -81,6 +95,18 @@ class _ListproductosState extends State<Listproductos> {
               },
             ),
             IconButton(
+                icon: const Icon(
+                  Icons.public,
+                ),
+                onPressed: () async {
+                  const url = 'https://www.google.com';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                }),
+            IconButton(
               icon: const Icon(
                 Icons.shopping_cart,
               ),
@@ -109,16 +135,16 @@ class _ListproductosState extends State<Listproductos> {
                       return Card(
                         child: GestureDetector(
                           onTap: () {
+                            String idDoc = snapshot.data!.docs[index].id;
                             buscarDoc();
-                            this.idDoc = snapshot.data!.docs[index].id;
                             print(idDoc);
-                            print(widget.TiendaId);
-                            print(nombreTienda);
+                            print(objProducto.idTienda);
+                            print(objProducto.tienda);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        detProductos(this.idDoc)));
+                                        detProductos1(idDoc)));
                           },
                           child: Stack(
                             children: [
