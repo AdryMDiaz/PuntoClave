@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Clientes/login_usuario.dart';
+import 'package:puntoclave/Clientes/token.dart';
 import 'package:puntoclave/Productos/detalle_productos1.dart';
 import 'package:puntoclave/Productos/objeto_producto.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,6 +21,7 @@ class _ListproductosState extends State<Listproductos> {
   String idDoc = "";
   String nombreTienda = "";
   ObjetoProducto objProducto = new ObjetoProducto();
+  final firebase = FirebaseFirestore.instance;
 
   buscarDoc() async {
     try {
@@ -48,6 +51,17 @@ class _ListproductosState extends State<Listproductos> {
       }
     } catch (e) {
       print(e);
+    }
+  }
+
+  agregarCarrito(String idTienda, String idUser, String idItem) async {
+    try {
+      await firebase.collection("Carrito").doc().set(
+          {"UsuarioId": idUser, "TiendaId": idTienda, "ProductoId": idItem});
+      //mensaje("Correcto","Registro correto");
+    } catch (e) {
+      print(e);
+      // mensaje("Error...",""+e.toString());
     }
   }
 
@@ -272,7 +286,25 @@ class _ListproductosState extends State<Listproductos> {
                                               backgroundColor: Colors.white60,
                                               foregroundColor:
                                                   Colors.pinkAccent,
-                                              onPressed: () {
+                                              onPressed: () async {
+                                                token tk = new token();
+                                                //tk.validarToken();
+                                                String idUser =
+                                                    await tk.validarToken();
+                                                print(idUser);
+                                                if (idUser != "") {
+                                                  agregarCarrito(
+                                                      widget.TiendaId,
+                                                      idUser,
+                                                      snapshot.data!.docs[index]
+                                                          .id);
+                                                } else {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (_) =>
+                                                              Loginclientes()));
+                                                }
                                                 print(
                                                     'Ir a carrito de compras');
                                                 //Navigator.pop(context);

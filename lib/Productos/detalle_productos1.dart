@@ -11,6 +11,7 @@ class detProductos1 extends StatefulWidget {
 
 class Product_det1 extends State<detProductos1> {
   //String nombre = "Nombre producto y/o servicio";
+  final firebase = FirebaseFirestore.instance;
 
   String logo = "";
   String titulo = "";
@@ -57,6 +58,17 @@ class Product_det1 extends State<detProductos1> {
       }
     } catch (e) {
       print(e);
+    }
+  }
+
+  agregarCarrito(String idTienda, String idUser, String idItem) async {
+    try {
+      await firebase.collection("Carrito").doc().set(
+          {"UsuarioId": idUser, "TiendaId": idTienda, "ProductoId": idItem});
+      //mensaje("Correcto","Registro correto");
+    } catch (e) {
+      print(e);
+      // mensaje("Error...",""+e.toString());
     }
   }
 
@@ -311,7 +323,7 @@ class Product_det1 extends State<detProductos1> {
                                   ],
                                 ),
                               ),
-                              Container(
+                              /*Container(
                                 padding: const EdgeInsets.all(30.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -324,22 +336,20 @@ class Product_det1 extends State<detProductos1> {
                                         //backgroundColor: Colors.white60,
                                         //foregroundColor: Colors.brown,
                                         onPressed: () {
-                                          print('Ir a carrito de compras');
-                                          //Navigator.pop(context);
+                                          Navigator.pop(context);
                                         },
                                         label: const Text(
-                                          'Añadir al Carrito',
+                                          'Regresar',
                                           style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.w900),
                                         ),
-                                        icon:
-                                            const Icon(Icons.add_shopping_cart),
+                                        icon: const Icon(Icons.arrow_back),
                                       ),
                                     ),
                                   ],
                                 ),
-                              )
+                              )*/
                             ],
                           ),
                         ),

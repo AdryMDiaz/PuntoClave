@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:puntoclave/Clientes/modificar_cliente.dart';
 import 'package:puntoclave/Clientes/modificar_pass_cli.dart';
 import 'package:puntoclave/Clientes/registro_clientes.dart';
+import 'package:puntoclave/Clientes/token.dart';
 
 import '../main.dart';
 
@@ -35,6 +36,9 @@ class _LoginclientesState extends State<Loginclientes> {
             if (cursor.get("contraseña") == password.text) {
               if (cursor.get("estado") == true) {
                 flag = 1;
+                token tk = new token();
+                tk.guardarToken(cursor.id);
+                //Navigator.of(context, rootNavigator: true).pop();
                 /*Navigator.push(context,
                     MaterialPageRoute(builder: (context) => detProductos()));*/
               } else {}
@@ -232,6 +236,10 @@ class _LoginclientesState extends State<Loginclientes> {
                           //foregroundColor: Colors.brown,
                           onPressed: () {
                             validarDatos();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyApp()));
                           },
                           label: const Text(
                             'Iniciar Sesión',
