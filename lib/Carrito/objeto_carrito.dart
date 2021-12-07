@@ -3,7 +3,9 @@ class carrito {
   var nombreTienda = "";
   var idProducto = "";
   var nombreProducto = "";
-  var valorVenta = "";
-  var valorIva = "";
   var valorNeto = "";
+  var valorIva = "";
+  var valorBruto = "";
+  var dcto = "";
+  var idTienda = "";
 }

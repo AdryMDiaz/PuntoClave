@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:puntoclave/Carrito/carritocompras.dart';
+import 'package:puntoclave/Carrito/objeto_carrito.dart';
 import 'package:puntoclave/Clientes/login_usuario.dart';
 import 'package:puntoclave/Clientes/token.dart';
 import 'package:puntoclave/Productos/detalle_productos1.dart';
@@ -55,10 +56,19 @@ class _ListproductosState extends State<Listproductos> {
     }
   }
 
-  agregarCarrito(String idTienda, String idUser, String idItem) async {
+  agregarCarrito(carrito cartShopping) async {
     try {
-      await firebase.collection("Carrito").doc().set(
-          {"UsuarioId": idUser, "TiendaId": idTienda, "ProductoId": idItem});
+      await firebase.collection("Carrito").doc().set({
+        "UsuarioId": cartShopping.idUser,
+        "ProductoId": cartShopping.idProducto,
+        "NombreProducto": cartShopping.nombreProducto,
+        "PrecioBruto": cartShopping.valorBruto,
+        "Iva": cartShopping.valorIva,
+        "PrecioNeto": cartShopping.valorNeto,
+        "Descuento": cartShopping.dcto,
+        "TiendaId": cartShopping.idTienda,
+        "NombreTienda": cartShopping.nombreTienda,
+      });
       //mensaje("Correcto","Registro correto");
     } catch (e) {
       print(e);
@@ -282,16 +292,43 @@ class _ListproductosState extends State<Listproductos> {
                                               heroTag: null,
                                               onPressed: () async {
                                                 token tk = new token();
-                                                //tk.validarToken();
                                                 String idUser =
                                                     await tk.validarToken("");
                                                 print(idUser);
+                                                carrito cart = new carrito();
+                                                //tk.validarToken();
+                                                cart.idProducto = snapshot
+                                                    .data!.docs[index].id;
+                                                cart.nombreProducto = snapshot
+                                                    .data!.docs[index]
+                                                    .get("nombre_producto");
+                                                cart.valorBruto = snapshot
+                                                    .data!.docs[index]
+                                                    .get("precio_Sin_Iva");
+                                                cart.valorIva = snapshot
+                                                    .data!.docs[index]
+                                                    .get("iva");
+                                                cart.valorNeto = snapshot
+                                                    .data!.docs[index]
+                                                    .get("precio_Venta");
+                                                cart.dcto = snapshot
+                                                    .data!.docs[index]
+                                                    .get("descuento");
+                                                cart.idTienda = snapshot
+                                                    .data!.docs[index]
+                                                    .get("idTienda");
+                                                cart.nombreTienda = snapshot
+                                                    .data!.docs[index]
+                                                    .get("nombre_tienda");
+                                                cart.idUser = idUser;
                                                 if (idUser != "") {
-                                                  agregarCarrito(
-                                                      widget.TiendaId,
-                                                      idUser,
-                                                      snapshot.data!.docs[index]
-                                                          .id);
+                                                  agregarCarrito(cart);
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (_) =>
+                                                              carritocompras(
+                                                                  /*idUser*/)));
                                                 } else {
                                                   Navigator.push(
                                                       context,
