@@ -284,7 +284,7 @@ class _ListproductosState extends State<Listproductos> {
                                                 token tk = new token();
                                                 //tk.validarToken();
                                                 String idUser =
-                                                    await tk.validarToken();
+                                                    await tk.validarToken("");
                                                 print(idUser);
                                                 if (idUser != "") {
                                                   agregarCarrito(

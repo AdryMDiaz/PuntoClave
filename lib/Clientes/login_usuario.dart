@@ -37,6 +37,15 @@ class _LoginclientesState extends State<Loginclientes> {
               if (cursor.get("estado") == true) {
                 flag = 1;
                 token tk = new token();
+                String idToken = await tk.validarToken("login");
+                if (idToken != "") {
+                  final firebase = FirebaseFirestore.instance;
+                  try {
+                    firebase.collection("Tokens").doc(idToken).delete();
+                  } catch (e) {
+                    print(e);
+                  }
+                }
                 tk.guardarToken(cursor.id);
                 //Navigator.of(context, rootNavigator: true).pop();
                 /*Navigator.push(context,
@@ -242,6 +251,7 @@ class _LoginclientesState extends State<Loginclientes> {
                                 MaterialPageRoute(
                                     builder: (context) => MyApp()));
                           },
+                          heroTag: null,
                           label: const Text(
                             'Iniciar Sesión',
                             style: TextStyle(
@@ -275,6 +285,7 @@ class _LoginclientesState extends State<Loginclientes> {
                                 MaterialPageRoute(
                                     builder: (context) => Modificarcliente()));
                           },
+                          heroTag: null,
                           label: const Text(
                             'Modificar Cliente',
                             style: TextStyle(
@@ -309,6 +320,7 @@ class _LoginclientesState extends State<Loginclientes> {
                                     builder: (context) =>
                                         Modificarpassclientes()));
                           },
+                          heroTag: null,
                           label: const Text(
                             'Olvidé mi contraseña',
                             style: TextStyle(
@@ -340,6 +352,7 @@ class _LoginclientesState extends State<Loginclientes> {
                             inactivar("Darse de baja",
                                 "¿Desea inactivar este cliente?");
                           },
+                          heroTag: null,
                           label: const Text(
                             'Darme de Baja',
                             style: TextStyle(

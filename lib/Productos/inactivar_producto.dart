@@ -118,7 +118,7 @@ class Product_inac extends State<inacProducto> {
     return MaterialApp(
       title: 'PuntoClave',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.deepPurple,
       ),
       home: Scaffold(
         appBar: AppBar(
