@@ -83,7 +83,7 @@ class _ModificarpasstiendasState extends State<Modificarpasstiendas> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Cancelar Suscripción',
+            'Modificar contraseña',
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

@@ -83,483 +83,491 @@ class IndexStart extends State<Index> {
         ),
         //drawer: MenuLateral(),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Viveres()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Viveres()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/pumpkin_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/pumpkin_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.brown,
-                        child: Text(
-                          categoria1,
-                          style: const TextStyle(
-                            color: Colors.yellow,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.brown,
+                          child: Text(
+                            categoria1,
+                            style: const TextStyle(
+                              color: Colors.yellow,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Tintoreria()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Tintoreria()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/washing_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/washing_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.white,
-                        child: Text(
-                          categoria2,
-                          style: const TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.white,
+                          child: Text(
+                            categoria2,
+                            style: const TextStyle(
+                              color: Colors.blueGrey,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Latoneria()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Latoneria()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/man_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/man_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.black12,
-                        child: Text(
-                          categoria3,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.black12,
+                          child: Text(
+                            categoria3,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Restaurantes()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Restaurantes()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/cupcakes_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/cupcakes_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.brown,
-                        child: Text(
-                          categoria4,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.brown,
+                          child: Text(
+                            categoria4,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Farmacia()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Farmacia()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/first_aid_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/first_aid_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.blueGrey,
-                        child: Text(
-                          categoria5,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.blueGrey,
+                          child: Text(
+                            categoria5,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Miscelanea()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Miscelanea()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/calculator_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/calculator_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.white54,
-                        child: Text(
-                          categoria6,
-                          style: const TextStyle(
-                            color: Colors.deepPurple,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.white54,
+                          child: Text(
+                            categoria6,
+                            style: const TextStyle(
+                              color: Colors.deepPurple,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Belleza()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Belleza()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/hair_salon_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/hair_salon_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.black12,
-                        child: Text(
-                          categoria7,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.black12,
+                          child: Text(
+                            categoria7,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Ropa()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Ropa()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/store_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/store_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.black12,
-                        child: Text(
-                          categoria8,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.black12,
+                          child: Text(
+                            categoria8,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Publicidad()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Publicidad()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/social_media_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/social_media_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.black12,
-                        child: Text(
-                          categoria9,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.black12,
+                          child: Text(
+                            categoria9,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Licoreria()));
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0,
-                                offset: Offset(2, 6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Licoreria()));
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  spreadRadius: 1.0,
+                                  blurRadius: 5.0,
+                                  offset: Offset(2, 6),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset(
+                                'images/alcoholic_1280.jpg',
+                                fit: BoxFit.fill,
+                                width: 300.0,
+                                height: 100.0,
                               ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(
-                              'images/alcoholic_1280.jpg',
-                              fit: BoxFit.fill,
-                              width: 400.0,
-                              height: 150.0,
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        color: Colors.black12,
-                        child: Text(
-                          categoria10,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
+                        Container(
+                          color: Colors.black12,
+                          child: Text(
+                            categoria10,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

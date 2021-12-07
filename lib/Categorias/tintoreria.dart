@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Clientes/login_usuario.dart';
 import 'package:puntoclave/Productos/list_productos.dart';
 
 import '../main.dart';
@@ -23,18 +24,26 @@ class Tintoreria extends StatelessWidget {
             style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 20.0,
+                fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
-          leading: const Icon(Icons.menu),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.home,
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));
+            },
+          ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
-                Icons.home,
+                Icons.login,
               ),
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyApp()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Loginclientes()));
               },
             ),
           ],

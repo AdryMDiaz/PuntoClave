@@ -86,7 +86,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Usuarios',
+            label: 'Clientes',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),

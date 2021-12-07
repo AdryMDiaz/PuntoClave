@@ -122,7 +122,7 @@ class _ModificarclienteState extends State<Modificarcliente> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            'Registro de Clientes',
+            'Actualización de datos',
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

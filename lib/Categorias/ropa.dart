@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Clientes/login_usuario.dart';
 import 'package:puntoclave/Productos/list_productos.dart';
 
 import '../main.dart';
@@ -20,27 +21,28 @@ class Ropa extends StatelessWidget {
           title: Text(
             categoria,
             style: const TextStyle(
-                color: Colors.white60,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
                 fontStyle: FontStyle.italic),
           ),
           leading: IconButton(
             icon: const Icon(
-              Icons.menu,
+              Icons.home,
             ),
             onPressed: () {
-              print('Menu Lateral');
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));
             },
           ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
-                Icons.home,
+                Icons.login,
               ),
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyApp()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Loginclientes()));
               },
             ),
           ],

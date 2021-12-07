@@ -162,16 +162,17 @@ class _LoginclientesState extends State<Loginclientes> {
                   MaterialPageRoute(builder: (context) => Registroclientes()));
             },
           ),
-          /*actions: <Widget>[
+          actions: <Widget>[
             IconButton(
               icon: const Icon(
-                Icons.person_add,
+                Icons.home,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
-          ],*/
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(

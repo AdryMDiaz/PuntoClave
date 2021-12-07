@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Carrito/carritocompras.dart';
 import 'package:puntoclave/Clientes/login_usuario.dart';
 import 'package:puntoclave/Clientes/token.dart';
 import 'package:puntoclave/Productos/detalle_productos1.dart';
@@ -84,21 +85,13 @@ class _ListproductosState extends State<Listproductos> {
           ),
           leading: IconButton(
             icon: const Icon(
-              Icons.menu,
+              Icons.arrow_back,
             ),
             onPressed: () {
-              print('Menu Lateral');
+              Navigator.pop(context);
             },
           ),
           actions: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
             IconButton(
               icon: const Icon(
                 Icons.home,
@@ -125,8 +118,8 @@ class _ListproductosState extends State<Listproductos> {
                 Icons.shopping_cart,
               ),
               onPressed: () {
-                print('Ir al carrito de compras');
-                //Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => carritocompras()));
               },
             ),
           ],
@@ -286,6 +279,7 @@ class _ListproductosState extends State<Listproductos> {
                                               backgroundColor: Colors.white60,
                                               foregroundColor:
                                                   Colors.pinkAccent,
+                                              heroTag: null,
                                               onPressed: () async {
                                                 token tk = new token();
                                                 //tk.validarToken();

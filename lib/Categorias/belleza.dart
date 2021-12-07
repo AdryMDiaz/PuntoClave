@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:puntoclave/Clientes/login_usuario.dart';
 import 'package:puntoclave/Productos/list_productos.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -37,20 +38,21 @@ class _BellezaState extends State<Belleza> {
           ),
           leading: IconButton(
             icon: const Icon(
-              Icons.menu,
+              Icons.home,
             ),
             onPressed: () {
-              print('Menu Lateral');
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));
             },
           ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
-                Icons.home,
+                Icons.login,
               ),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyApp()));
+                    context, MaterialPageRoute(builder: (context) => Loginclientes()));
               },
             ),
           ],
@@ -245,7 +247,7 @@ class _BellezaState extends State<Belleza> {
                                               snapshot.data!.docs[index]
                                                   .get("productos"),
                                               style: const TextStyle(
-                                                fontSize: 12.0,
+                                                fontSize: 10.0,
                                                 fontWeight: FontWeight.w300,
                                               ),
                                             ),
