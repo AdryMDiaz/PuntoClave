@@ -105,19 +105,6 @@ class _GestiontiendasState extends State<Gestiontiendas> {
           actions: <Widget>[
             IconButton(
               icon: const Icon(
-                Icons.mode_edit,
-              ),
-              tooltip: "Modificar Producto",
-              onPressed: () {
-                cerrarSesion();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Modificarproducto()));
-              },
-            ),
-            IconButton(
-              icon: const Icon(
                 Icons.logout,
               ),
               tooltip: "Cerrar Sesión",
@@ -184,6 +171,25 @@ class _GestiontiendasState extends State<Gestiontiendas> {
                                     ),
                                     /*3*/
                                     FloatingActionButton(
+                                      heroTag: null,
+                                      backgroundColor: Colors.white60,
+                                      foregroundColor: Colors.purpleAccent,
+                                      onPressed: () {
+                                        this.idProducto =
+                                            snapshot.data!.docs[index].id;
+                                        print(this.idProducto);
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Modificarproducto(
+                                                        this.idProducto)));
+                                      },
+                                      child: const Icon(Icons.mode_edit),
+                                      tooltip: "Modificar producto",
+                                    ),
+                                    FloatingActionButton(
+                                      heroTag: null,
                                       backgroundColor: Colors.white60,
                                       foregroundColor: Colors.purpleAccent,
                                       onPressed: () {
@@ -198,7 +204,7 @@ class _GestiontiendasState extends State<Gestiontiendas> {
                                                         this.idProducto)));
                                       },
                                       child: const Icon(Icons.auto_delete),
-                                      tooltip: "Modificar producto",
+                                      tooltip: "Eliminar producto",
                                     ),
                                   ],
                                 ),

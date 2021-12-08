@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Modificarproducto extends StatefulWidget {
-  const Modificarproducto({Key? key}) : super(key: key);
-  //final String idProducto;
-  //Modificarproducto(this.idProducto);
+  //const Modificarproducto({Key? key}) : super(key: key);
+  final String idProducto;
+  Modificarproducto(this.idProducto);
 
   @override
   _ModificarproductoState createState() => _ModificarproductoState();
@@ -12,49 +12,55 @@ class Modificarproducto extends StatefulWidget {
 
 class _ModificarproductoState extends State<Modificarproducto> {
   final firebase = FirebaseFirestore.instance;
-  TextEditingController nombreTienda = TextEditingController();
+
+  //TextEditingController nombreTienda = TextEditingController();
   TextEditingController nombreProducto = TextEditingController();
   TextEditingController precioVenta = TextEditingController();
-  TextEditingController iva = TextEditingController();
+  TextEditingController valorIva = TextEditingController();
   TextEditingController precioSinIva = TextEditingController();
-  TextEditingController dcto = TextEditingController();
+  TextEditingController valorDcto = TextEditingController();
   TextEditingController categoriaProducto = TextEditingController();
   TextEditingController descripcionProducto = TextEditingController();
   TextEditingController rutaFoto = TextEditingController();
-  TextEditingController status = TextEditingController();
 
   //para poderlos comunicar con la función de modificar
-  String idProducto = "";
+  String docId = "";
+  bool status = false;
+  String nombreTienda = "";
   String idTienda = "";
-  String nombretienda = "";
 
   buscarDatos() async {
     try {
       CollectionReference ref = FirebaseFirestore.instance
           .collection("Productos"); //instanciamos la colección
-      QuerySnapshot producto =
+      QuerySnapshot tienda =
           await ref.get(); //almacenamos la colección en la variable cliente
 
-      if (producto.docs.length != 0) {
+      if (tienda.docs.length != 0) {
         int flag = 0;
-        for (var cursor in producto.docs) {
-          if (cursor.get("nombre_producto") == nombreProducto.text) {
-            int flag = 1;
-            categoriaProducto.text = cursor.get("categoria");
-            descripcionProducto.text = cursor.get("descripcion_Producto");
-            dcto.text = cursor.get("descuento");
-            rutaFoto.text = cursor.get("foto_producto");
-            iva.text = cursor.get("iva");
-            precioSinIva.text = cursor.get("precio_Sin_Iva");
+        //la variable cursor temporalmente almacenará la información de la colección por cada documento existente en ella
+        for (var cursor in tienda.docs) {
+          if (cursor.id == widget.idProducto) {
+            flag = 1;
+            print(cursor.id);
+            //nombreTienda.text = cursor.get("nombre_tienda");
+            nombreProducto.text = cursor.get("nombre_producto");
+            valorIva.text = cursor.get("iva");
+            valorDcto.text = cursor.get("descuento");
             precioVenta.text = cursor.get("precio_Venta");
-            status.text = cursor.get("estado");
+            precioSinIva.text = cursor.get("precio_Sin_Iva");
+            descripcionProducto.text = cursor.get("descripcion_Producto");
+            categoriaProducto.text = cursor.get("categoria_Producto");
+            rutaFoto.text = cursor.get("foto_producto");
             //garantizamos que vamos a modificar el mismo dato
-            this.idProducto = cursor.id;
+            this.docId = cursor.id;
+            this.status = cursor.get("estado");
+            this.nombreTienda = cursor.get("nombre_tienda");
             this.idTienda = cursor.get("idTienda");
-            this.nombretienda = cursor.get("nombre_tienda");
-          } else {
-            print("Producto no encontrado");
-          }
+          } else {}
+        }
+        if (flag == 0) {
+          print("Producto no encontrado");
         }
       } else {
         print("Colección vacía");
@@ -68,19 +74,19 @@ class _ModificarproductoState extends State<Modificarproducto> {
     try {
       await firebase
           .collection("Productos")
-          .doc(idProducto) //vacío automaticamente genera el id
+          .doc(docId) //vacío automaticamente genera el id
           .set({
-        "categoria_Producto": categoriaProducto.text,
+        "nombre_producto": nombreProducto.text,
+        "precio_Sin_Iva": precioSinIva.text,
+        "iva": valorIva.text,
+        "precio_Venta": precioVenta.text,
+        "descuento": valorDcto.text,
         "descripcion_Producto": descripcionProducto.text,
-        "descuento": dcto.text,
-        "estado": status.text,
+        "categoria_Producto": categoriaProducto.text,
         "foto_producto": rutaFoto.text,
         "idTienda": this.idTienda,
-        "iva": iva.text,
-        "nombre_producto": nombreProducto.text,
-        "nombre_tienda": this.nombretienda,
-        "precio_Sin_Iva": precioSinIva.text,
-        "precio_Venta": precioVenta.text,
+        "nombre_tienda": this.nombreTienda,
+        "estado": true,
       });
       mensaje("Modificación Exitosa", "Producto modificado exitosamente");
     } catch (e) {
@@ -100,7 +106,7 @@ class _ModificarproductoState extends State<Modificarproducto> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(
-            "Modificación de Productos",
+            "Modificación de Producto",
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -117,40 +123,25 @@ class _ModificarproductoState extends State<Modificarproducto> {
           ),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               Padding(
-                padding:
-                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
-                child: TextField(
-                  controller: nombreProducto,
-                  decoration: InputDecoration(
-                    labelText: "Nombre Producto",
-                    hintText: "Digite el nombre del producto",
-                    isDense: true,
-                    contentPadding: EdgeInsets.all(12),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      //width: 150.0,
-                      //height: 25.0,
+                      width: 180.0,
+                      height: 40.0,
                       child: FloatingActionButton.extended(
                         onPressed: () {
-                          print(nombreProducto);
+                          print(widget.idProducto);
                           buscarDatos();
                         },
                         label: const Text(
-                          'Buscar Producto',
+                          'Llenar campos',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
@@ -164,14 +155,14 @@ class _ModificarproductoState extends State<Modificarproducto> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
                 child: TextField(
-                  controller: precioVenta,
+                  controller: nombreProducto,
                   decoration: InputDecoration(
+                    labelText: "Nombre Producto",
+                    hintText: "Digite el nombre del producto",
                     isDense: true,
-                    contentPadding: EdgeInsets.all(12),
-                    labelText: "Precio Venta",
-                    hintText: "Digite valor de venta del producto",
+                    contentPadding: EdgeInsets.all(10),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
@@ -179,13 +170,43 @@ class _ModificarproductoState extends State<Modificarproducto> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
                 child: TextField(
-                  controller: iva,
+                  controller: categoriaProducto,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(12),
-                    labelText: "Valor IVA",
+                    contentPadding: EdgeInsets.all(10),
+                    labelText: "Categoría Producto",
+                    hintText: "Digite la categoría del producto",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
+                child: TextField(
+                  controller: precioSinIva,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.all(10),
+                    labelText: "Precio Bruto",
+                    hintText: "Digite el valor antes de IVA",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
+                child: TextField(
+                  controller: valorIva,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.all(10),
+                    labelText: "IVA",
                     hintText: "Digite el valor del IVA",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
@@ -194,14 +215,14 @@ class _ModificarproductoState extends State<Modificarproducto> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
                 child: TextField(
-                  controller: precioSinIva,
+                  controller: precioVenta,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(12),
-                    labelText: "Valor sin Iva",
-                    hintText: "Digite valor del producto sin IVA",
+                    contentPadding: EdgeInsets.all(10),
+                    labelText: "Precio Venta",
+                    hintText: "Digite el valor a la venta",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
@@ -209,14 +230,14 @@ class _ModificarproductoState extends State<Modificarproducto> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
                 child: TextField(
-                  controller: dcto,
+                  controller: valorDcto,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(12),
+                    contentPadding: EdgeInsets.all(10),
                     labelText: "Valor Descuento",
-                    hintText: "Digite valor del descuento",
+                    hintText: "Digite valor descuento",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
@@ -224,29 +245,14 @@ class _ModificarproductoState extends State<Modificarproducto> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
-                child: TextField(
-                  controller: categoriaProducto,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    contentPadding: EdgeInsets.all(12),
-                    labelText: "Categoria Producto",
-                    hintText: "Seleccione categoria del producto",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
                 child: TextField(
                   controller: descripcionProducto,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(12),
-                    labelText: "Descripcion del Producto",
-                    hintText: "Digite breve descripcion del producto",
+                    contentPadding: EdgeInsets.all(10),
+                    labelText: "Descripción Producto",
+                    hintText: "Describa brevemente el producto",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
@@ -254,50 +260,48 @@ class _ModificarproductoState extends State<Modificarproducto> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 0),
+                    EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 0),
                 child: TextField(
                   controller: rutaFoto,
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.all(12),
-                    labelText: "Estado producto (True/False)",
-                    hintText: "Estado producto (True/False)",
+                    contentPadding: EdgeInsets.all(10),
+                    labelText: "Foto Producto",
+                    hintText: "Foto Producto",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      //width: 150.0,
-                      //height: 25.0,
+                      width: 180.0,
+                      height: 40.0,
                       child: FloatingActionButton.extended(
                         onPressed: () {
                           modProducto();
-
                           nombreProducto.clear();
-                          precioVenta.clear();
-                          iva.clear();
-                          precioSinIva.clear();
-                          dcto.clear();
                           categoriaProducto.clear();
+                          precioVenta.clear();
+                          precioSinIva.clear();
+                          valorIva.clear();
+                          valorDcto.clear();
                           descripcionProducto.clear();
                           rutaFoto.clear();
-                          status.clear();
                         },
                         label: const Text(
-                          'Crear Producto',
+                          'Actualizar Campos',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        icon: const Icon(Icons.add_box),
+                        icon: const Icon(Icons.mode_edit),
                       ),
                     ),
                   ],
@@ -322,7 +326,7 @@ class _ModificarproductoState extends State<Modificarproducto> {
               child: const Text(
                 "Aceptar",
                 style: TextStyle(
-                  color: Colors.deepPurple,
+                  color: Colors.indigo,
                   fontStyle: FontStyle.italic,
                 ),
               ),

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class inacProducto extends StatefulWidget {
+  //const inacProducto({Key? key}) : super(key: key);
   final String idProducto;
   inacProducto(this.idProducto);
 
