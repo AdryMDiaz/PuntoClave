@@ -193,6 +193,7 @@ class _ModificarpasstiendasState extends State<Modificarpasstiendas> {
                           onPressed: () {
                             validarDatos();
                           },
+                          heroTag: null,
                           label: const Text(
                             'Cambiar Contraseña',
                             style: TextStyle(

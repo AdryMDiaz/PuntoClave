@@ -208,6 +208,7 @@ class _RegistroclientesState extends State<Registroclientes> {
                           cellphone.clear();
                           password.clear();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Registrarse',
                           style: TextStyle(

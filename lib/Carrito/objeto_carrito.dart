@@ -8,4 +8,6 @@ class carrito {
   var valorBruto = "";
   var dcto = "";
   var idTienda = "";
+  var totalPago = 0;
+  var cantidad = 0;
 }

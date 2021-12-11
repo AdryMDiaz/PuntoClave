@@ -20,6 +20,7 @@ class _LoginclientesState extends State<Loginclientes> {
 
   TextEditingController correo_electronico = TextEditingController();
   TextEditingController password = TextEditingController();
+  int _value = 1;
 
   validarDatos() async {
     try {
@@ -244,6 +245,7 @@ class _LoginclientesState extends State<Loginclientes> {
                         child: FloatingActionButton.extended(
                           //backgroundColor: Colors.white60,
                           //foregroundColor: Colors.brown,
+                          heroTag: null,
                           onPressed: () {
                             validarDatos();
                             Navigator.push(
@@ -251,7 +253,6 @@ class _LoginclientesState extends State<Loginclientes> {
                                 MaterialPageRoute(
                                     builder: (context) => MyApp()));
                           },
-                          heroTag: null,
                           label: const Text(
                             'Iniciar Sesión',
                             style: TextStyle(

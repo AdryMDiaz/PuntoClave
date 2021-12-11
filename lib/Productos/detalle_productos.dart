@@ -200,6 +200,7 @@ class Product_det extends State<detProductos> {
                 print('Ir a carrito de compras');
                 //Navigator.pop(context);
               },
+              heroTag: null,
               label: const Text(
                 'Añadir al Carrito',
                 style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900),

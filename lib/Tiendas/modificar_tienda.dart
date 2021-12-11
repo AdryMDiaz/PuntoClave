@@ -205,6 +205,7 @@ class _ModificartiendaState extends State<Modificartienda> {
                         onPressed: () {
                           buscarDatos();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Buscar Tienda',
                           style: TextStyle(
@@ -375,6 +376,7 @@ class _ModificartiendaState extends State<Modificartienda> {
                           productos.clear();
                           rutaFoto.clear();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Actualizar Datos',
                           style: TextStyle(

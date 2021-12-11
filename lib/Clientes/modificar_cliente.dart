@@ -204,6 +204,7 @@ class _ModificarclienteState extends State<Modificarcliente> {
                         onPressed: () {
                           buscarDatos();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Buscar Cliente',
                           style: TextStyle(
@@ -307,6 +308,7 @@ class _ModificarclienteState extends State<Modificarcliente> {
                           cellphone.clear();
                           password.clear();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Actualizar Datos',
                           style: TextStyle(

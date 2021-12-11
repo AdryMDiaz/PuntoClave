@@ -140,6 +140,7 @@ class _ModificarproductoState extends State<Modificarproducto> {
                           print(widget.idProducto);
                           buscarDatos();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Llenar campos',
                           style: TextStyle(
@@ -294,6 +295,7 @@ class _ModificarproductoState extends State<Modificarproducto> {
                           descripcionProducto.clear();
                           rutaFoto.clear();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Actualizar Campos',
                           style: TextStyle(

@@ -236,6 +236,7 @@ class _RegistroproductosState extends State<Registroproductos> {
                           descripcionProducto.clear();
                           rutaFoto.clear();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Crear Producto',
                           style: TextStyle(

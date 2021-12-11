@@ -288,6 +288,7 @@ class _RegistrotiendasState extends State<Registrotiendas> {
                           rutaFoto.clear();
                           password1.clear();
                         },
+                        heroTag: null,
                         label: const Text(
                           'Crear Negocio',
                           style: TextStyle(

@@ -64,10 +64,12 @@ class _ListproductosState extends State<Listproductos> {
         "NombreProducto": cartShopping.nombreProducto,
         "PrecioBruto": cartShopping.valorBruto,
         "Iva": cartShopping.valorIva,
-        "PrecioNeto": cartShopping.valorNeto,
+        "PrecioNeto": int.parse(cartShopping.valorNeto),
         "Descuento": cartShopping.dcto,
         "TiendaId": cartShopping.idTienda,
         "NombreTienda": cartShopping.nombreTienda,
+        "Cantidad": cartShopping.cantidad,
+        "TotalPago": cartShopping.totalPago
       });
       //mensaje("Correcto","Registro correto");
     } catch (e) {
@@ -123,15 +125,6 @@ class _ListproductosState extends State<Listproductos> {
                     throw 'Could not launch $url';
                   }
                 }),
-            IconButton(
-              icon: const Icon(
-                Icons.shopping_cart,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => carritocompras()));
-              },
-            ),
           ],
         ),
         body: Container(
@@ -328,7 +321,7 @@ class _ListproductosState extends State<Listproductos> {
                                                       MaterialPageRoute(
                                                           builder: (_) =>
                                                               carritocompras(
-                                                                  /*idUser*/)));
+                                                                  idUser)));
                                                 } else {
                                                   Navigator.push(
                                                       context,

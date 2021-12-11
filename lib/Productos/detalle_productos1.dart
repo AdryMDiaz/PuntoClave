@@ -338,6 +338,7 @@ class Product_det1 extends State<detProductos1> {
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
+                                        heroTag: null,
                                         label: const Text(
                                           'Regresar',
                                           style: TextStyle(

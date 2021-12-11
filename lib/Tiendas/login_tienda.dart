@@ -310,6 +310,7 @@ class _LogintiendasState extends State<Logintiendas> {
                                 MaterialPageRoute(
                                     builder: (context) => Modificartienda()));
                           },
+                          heroTag: null,
                           label: const Text(
                             'Modificar Tienda',
                             style: TextStyle(

@@ -379,6 +379,7 @@ class Product_inac extends State<inacProducto> {
                                         onPressed: () {
                                           inactivarProducto();
                                         },
+                                        heroTag: null,
                                         label: const Text(
                                           'Eliminar Producto',
                                           style: TextStyle(
