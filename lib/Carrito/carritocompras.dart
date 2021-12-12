@@ -65,6 +65,25 @@ class carritocomprasapp extends State<carritocompras> {
     return totalcompra.toStringAsFixed(2);
   }
 
+  borrarCarrito() async {
+    try {
+      CollectionReference ref =
+          FirebaseFirestore.instance.collection("Carrito");
+      QuerySnapshot cart = await ref.get();
+      if (cart.docs.length != 0) {
+        for (var cursor in cart.docs) {
+          if (cursor.get("UsuarioId") == widget.idUser) {
+            print(cursor.get("UsuarioId"));
+            print(widget.idUser);
+            ref.doc(cursor.id).delete();
+          }
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget pagoTotal = (Container(
@@ -307,7 +326,10 @@ class carritocomprasapp extends State<carritocompras> {
             child: Column(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    borrarCarrito();
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
                   child: Container(
                     padding: EdgeInsets.all(20),
                     decoration: const BoxDecoration(
@@ -330,7 +352,10 @@ class carritocomprasapp extends State<carritocompras> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    borrarCarrito();
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
                   child: Container(
                     padding: EdgeInsets.all(20),
                     decoration: const BoxDecoration(
